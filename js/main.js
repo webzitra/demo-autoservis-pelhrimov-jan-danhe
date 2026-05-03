@@ -116,22 +116,16 @@
     }
 
     // ── Contact Form ──
-    var form = document.querySelector('[data-wz-contact]');
+    var form = document.querySelector('.contact-form');
     if (form) {
-        form.addEventListener('submit', function(e) {
-            e.preventDefault();
+        form.addEventListener('submit', function() {
             var btn = form.querySelector('button[type="submit"]');
-            var origText = btn.textContent;
             btn.textContent = 'Odesílání...';
             btn.disabled = true;
             setTimeout(function() {
-                btn.textContent = 'Odesláno!';
-                form.reset();
-                setTimeout(function() {
-                    btn.textContent = origText;
-                    btn.disabled = false;
-                }, 2000);
-            }, 1000);
+                btn.textContent = 'Odeslat zprávu';
+                btn.disabled = false;
+            }, 3000);
         });
     }
 

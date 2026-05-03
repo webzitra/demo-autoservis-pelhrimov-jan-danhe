@@ -1,4 +1,31 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://https://wz-demo-autoservis-pelhrimov-jan-danhe.netlify.app/sitemap.xml
+# Seznam.cz
+User-agent: SeznamBot
+Allow: /
+Request-rate: 300/1m
+
+# AI Search Crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: OAI-SearchBot
+Allow: /
+
+User-agent: ChatGPT-User
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /
+
+User-agent: Bingbot
+Allow: /
+
+Sitemap: https://autoservispelhrimov.cz/sitemap.xml
