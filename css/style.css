@@ -625,3 +625,27 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     .cookie-actions { justify-content: center; }
     .other-services-grid { grid-template-columns: 1fr; }
 }
+
+/* ── Pošlete fotku závady (sekce Kontakt) ── */
+.fault-photo {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    background: var(--bg-alt);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 28px 32px;
+    margin-bottom: 40px;
+}
+.fault-photo-text h3 { font-size: 1.25rem; margin: 0 0 6px; color: var(--text); }
+.fault-photo-text p { margin: 0; color: var(--text-muted); max-width: 52ch; line-height: 1.5; }
+.fault-photo-actions { display: flex; flex-wrap: wrap; gap: 12px; flex-shrink: 0; }
+.btn-whatsapp { background: #25d366; color: #fff; border: 1px solid #25d366; }
+.btn-whatsapp:hover { background: #1da851; border-color: #1da851; color: #fff; }
+@media (max-width: 720px) {
+    .fault-photo { flex-direction: column; align-items: flex-start; padding: 24px; }
+    .fault-photo-actions { width: 100%; }
+    .fault-photo-actions .btn { flex: 1 1 auto; justify-content: center; }
+}
