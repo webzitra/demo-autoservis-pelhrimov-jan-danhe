@@ -649,3 +649,23 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     .fault-photo-actions { width: 100%; }
     .fault-photo-actions .btn { flex: 1 1 auto; justify-content: center; }
 }
+
+/* ── Typografie: zalamování a délka řádků (všechna zařízení) ── */
+/* Vyvážené nadpisy — rovnoměrné řádky, žádné osamocené slovo na konci */
+h1, h2, h3, h4,
+.hero-title, .hero-subtitle, .section-title, .section-subtitle, .page-hero h1,
+.pricing-card h3, .service-detail h2, .other-service-card h3,
+.fault-photo-text h3, .contact-form-title {
+    text-wrap: balance;
+    overflow-wrap: break-word;
+}
+/* Odstavce a seznamy — žádný osamocený sirotek na posledním řádku */
+p, li,
+.hero-text, .pricing-card p, .about-text p, .service-detail p,
+.review-text, .page-hero p, .fault-photo-text p, .pricing-note, .form-note {
+    text-wrap: pretty;
+    overflow-wrap: break-word;
+}
+/* Měřítko (measure) — centrované podnadpisy ať se na širokém monitoru neroztáhnou přes celou šířku */
+.section-subtitle { max-width: 52ch; margin-left: auto; margin-right: auto; }
+.hero-text { max-width: 54ch; }
