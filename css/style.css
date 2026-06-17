@@ -578,8 +578,12 @@ a:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; border
     .nav-menu .nav-link:hover { color: var(--primary); }
     .nav-toggle { display: flex; }
 
-    .hero { min-height: auto; padding: 120px 0 60px; }
-    .hero-title { font-size: 2.2rem; }
+    .hero { min-height: auto; padding: 116px 0 56px; }
+    /* Silnější, rovnoměrný overlay — busy fotka provozovny ustoupí, text je klidný a čitelný */
+    .hero-overlay { background: linear-gradient(180deg, rgba(13,21,32,0.80) 0%, rgba(13,21,32,0.92) 100%); }
+    .hero-title { font-size: 2.1rem; margin-bottom: 14px; }
+    .hero-subtitle { font-size: 1rem; margin-bottom: 16px; }
+    .hero-text { font-size: 1rem; line-height: 1.6; margin-bottom: 28px; }
     .hero-cta { flex-direction: column; }
     .hero-cta .btn { width: 100%; }
 
