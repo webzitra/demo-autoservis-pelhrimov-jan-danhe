@@ -12,9 +12,12 @@ var uc=q.get('utm_campaign');if(uc)src+='/'+uc.toLowerCase().slice(0,40)}}
 else if(q.get('fbclid')){src='meta-ad'}}catch(e){}
 function send(t,l){try{navigator.sendBeacon(U,JSON.stringify({s:S,p:location.pathname,r:r,d:d,sid:sid,t:t,l:l,src:src}))}catch(e){}}
 send('pageview');
-try{var secs={'sluzby':'sluzby','cenik':'cenik','recenze':'recenze','faq':'faq','kontakt':'kontakt'},seen={};
+// sekce se počítá, až když na ní člověk vydrží 1 s (plynulý scroll přes menu jinak „projede“ všechny sekce)
+try{var secs={'sluzby':'sluzby','cenik':'cenik','recenze':'recenze','faq':'faq','kontakt':'kontakt'},seen={},tm={};
 if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){
-if(!en.isIntersecting)return;var l=secs[en.target.id];if(!l||seen[l])return;seen[l]=1;send('section',l);io.unobserve(en.target)})},
+var l=secs[en.target.id];if(!l||seen[l])return;
+if(!en.isIntersecting){clearTimeout(tm[l]);return}
+clearTimeout(tm[l]);tm[l]=setTimeout(function(){if(seen[l])return;seen[l]=1;send('section',l);io.unobserve(en.target)},1000)})},
 {rootMargin:'0px 0px -25% 0px'});
 Object.keys(secs).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)})}}catch(e){}
 var MISTA={'hero':'uvod','o-nas':'o-nas','sluzby':'sluzby','cenik':'cenik','galerie':'galerie','recenze':'recenze','faq':'faq','kontakt':'kontakt'};
