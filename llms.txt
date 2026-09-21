@@ -1,27 +1,36 @@
 # Autoservis Pelhřimov
 
-## O firmě
-Autoservis Pelhřimov je rychloservis a autoservis v Pelhřimově (Kraj Vysočina), který vede kolektiv zkušených mechaniků a společníků. IČO: 05943019. Adresa: Nádražní 652, Pelhřimov 393 01. Telefon: 606 389 116. Email: autoservispelhrimov@seznam.cz.
+> Rychloservis a autoservis pro všechny značky v Pelhřimově (Kraj Vysočina) na adrese Nádražní 652. Většinu služeb děláme na počkání, nejsilnější stránkou je diagnostika. Provozovatel: AUTOSERVIS PELHŘIMOV s. r. o., IČO 05943019, DIČ CZ05943019.
+
+## Kontakt
+- Adresa: Nádražní 652, 393 01 Pelhřimov (Plus Code C6FF+GP Pelhřimov)
+- Telefon i WhatsApp (fotka závady): +420 606 389 116
+- E-mail: autoservispelhrimov@seznam.cz
+- Otevírací doba: pondělí až pátek 7:00–15:30, o víkendu po dohodě
+- Mapa a recenze: https://maps.google.com/?cid=5687577743439231713
+- Bez objednání: jako rychloservis bereme i zákazníky bez objednání, na složitější opravy je lepší zavolat předem.
+
+## Ceník (orientační, včetně DPH, stav září 2026)
+- Mechanické práce: 550 Kč za hodinu, díly a náplně zvlášť
+- Diagnostika: 1 000 Kč (vyčtení chybových kódů řídicích jednotek všech značek a návrh řešení)
+- Přezutí a vyvážení osobního vozu: od 1 000 Kč, konečná cena podle počtu vyvažovacích závaží
+- Geometrie kol laserovým přístrojem: od 1 200 Kč
+- Servis klimatizace: podle typu opravy, cenu řekneme vždy předem
+- Příprava na STK: individuálně; vůz převezmeme, připravíme, odvezeme na STK a přivezeme zpět
+- Cenová kalkulace je zdarma, konečnou cenu vždy potvrdíme předem.
 
 ## Služby
-- Kompletní pneuservis — přezutí, vyvážení, opravy defektů, uskladnění pneumatik
-- Karosářské práce — opravy karoserií, lakování, vyřízení pojistných událostí
-- Příprava na STK a měření emisí — kompletní příprava vozu na technickou kontrolu
-- Autodiagnostika — počítačová diagnostika, čtení chybových kódů všech značek
-- Servis a údržba — výměna olejů, filtrů, brzd, rozvodů, chladicího systému
-- Geometrie kol — měření a seřízení sbíhavosti, odklonu a příklonu
+- [Diagnostika](https://autoservispelhrimov.cz/diagnostika/): počítačová diagnostika motoru, převodovky, ABS, airbagů, klimatizace a elektroniky, všechny značky
+- [Údržba a servis](https://autoservispelhrimov.cz/udrzba-a-servis/): výměna olejů, filtrů, brzd, rozvodů, chladicího systému
+- [Pneuservis](https://autoservispelhrimov.cz/pneuservis/): přezutí, vyvážení, opravy defektů, uskladnění pneumatik
+- [Geometrie kol](https://autoservispelhrimov.cz/geometrie/): měření a seřízení geometrie laserovým přístrojem
+- [Příprava na STK](https://autoservispelhrimov.cz/priprava-stk/): kompletní příprava na technickou kontrolu a emise včetně odvozu na STK
+- [Karosářské práce](https://autoservispelhrimov.cz/karosarske-prace/): opravy karoserií, lakování, vyřízení pojistných událostí na klíč
+- Servis klimatizací: kontrola, dezinfekce, doplnění chladiva, opravy
+- Opravujeme osobní i užitková auta všech značek, nákladní vozy i motocykly. Po opravě umíme auto odvézt nebo přistavit.
 
-## Otevírací doba
-Pondělí–Pátek: 7:00–15:30. Víkendy po dohodě.
-
-## Klíčové stránky
-- [Úvod](https://autoservispelhrimov.cz/): Hlavní stránka s přehledem služeb, recenzemi a kontaktem
-- [Pneuservis](https://autoservispelhrimov.cz/pneuservis/): Přezutí pneumatik, vyvážení, uskladnění
-- [Karosářské práce](https://autoservispelhrimov.cz/karosarske-prace/): Opravy karoserií, lakování, pojistné události
-- [Příprava na STK](https://autoservispelhrimov.cz/priprava-stk/): Kompletní příprava na technickou kontrolu a emise
-- [Diagnostika](https://autoservispelhrimov.cz/diagnostika/): Počítačová diagnostika motoru a řídících jednotek
-- [Údržba a servis](https://autoservispelhrimov.cz/udrzba-a-servis/): Pravidelný servis, výměna olejů, brzd, rozvodů
-- [Geometrie kol](https://autoservispelhrimov.cz/geometrie/): Měření a seřízení geometrie kol
+## Hodnocení
+Google: 4,3 z 5 ze 77 hodnocení (stav 21. 9. 2026). V recenzích zákazníci nejčastěji zmiňují rychlost a ochotu, často i pomoc při poruše na cestě (například na D1 nebo mezi Táborem a Jihlavou).
 
 ## Spádová oblast
-Pelhřimov, Humpolec, Pacov, Kamenice nad Lipou, okres Pelhřimov, Kraj Vysočina.
+Pelhřimov, Humpolec, Pacov, Kamenice nad Lipou, Počátky, okres Pelhřimov, Kraj Vysočina.

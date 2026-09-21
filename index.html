@@ -3,14 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Autoservis Pelhřimov | Rychloservis a&nbsp;opravy všech značek</title>
-    <meta name="description" content="Autoservis Pelhřimov — rychloservis na počkání, pneuservis, geometrie kol, karosářské práce, příprava na STK. Opravujeme všechny značky od roku 2013.">
+    <title>Autoservis Pelhřimov | Rychloservis a opravy všech značek</title>
+    <meta name="description" content="Rychloservis na počkání v Pelhřimově, Nádražní 652. Diagnostika, pneuservis, geometrie, karosářské práce a příprava na STK. Všechny značky od roku 2013.">
 
     <!-- Open Graph -->
     <meta property="og:title" content="Autoservis Pelhřimov">
     <meta property="og:description" content="Rychloservis na počkání, pneuservis, geometrie kol, karosářské práce, příprava na STK.">
     <meta property="og:type" content="website">
-    <meta property="og:url" content="https://autoservispelhrimov.cz">
+    <meta property="og:url" content="https://autoservispelhrimov.cz/">
     <meta property="og:locale" content="cs_CZ">
     <meta property="og:site_name" content="Autoservis Pelhřimov">
     <meta property="og:image" content="https://autoservispelhrimov.cz/img/og-autoservis-pelhrimov.jpg">
@@ -39,13 +39,25 @@
     {
         "@context": "https://schema.org",
         "@type": "AutoRepair",
+        "@id": "https://autoservispelhrimov.cz/#autoservis",
         "name": "Autoservis Pelhřimov",
+        "legalName": "AUTOSERVIS PELHŘIMOV s. r. o.",
+        "alternateName": "Autoservis Pelhřimov, Rychloservis",
         "description": "Rychloservis na počkání, pneuservis, geometrie kol, karosářské práce, příprava na STK. Opravujeme všechny značky od roku 2013.",
-        "url": "https://autoservispelhrimov.cz",
-        "sameAs": ["https://maps.google.com/?cid=5687577743439231713"],
+        "url": "https://autoservispelhrimov.cz/",
+        "logo": "https://autoservispelhrimov.cz/web-app-manifest-512x512.png",
+        "image": [
+            "https://autoservispelhrimov.cz/img/hero-exterior.jpg",
+            "https://autoservispelhrimov.cz/img/og-autoservis-pelhrimov.jpg"
+        ],
         "telephone": "+420 606 389 116",
         "email": "autoservispelhrimov@seznam.cz",
-        "image": "https://autoservispelhrimov.cz/img/hero-exterior.jpg",
+        "vatID": "CZ05943019",
+        "identifier": {
+            "@type": "PropertyValue",
+            "propertyID": "IČO",
+            "value": "05943019"
+        },
         "priceRange": "$$",
         "currenciesAccepted": "CZK",
         "paymentAccepted": "Hotovost, Platební karta",
@@ -59,37 +71,166 @@
         },
         "geo": {
             "@type": "GeoCoordinates",
-            "latitude": 49.4316,
-            "longitude": 15.2233
+            "latitude": 49.4238101,
+            "longitude": 15.2242517
         },
+        "hasMap": "https://maps.google.com/?cid=5687577743439231713",
+        "sameAs": [
+            "https://maps.google.com/?cid=5687577743439231713",
+            "https://www.firmy.cz/detail/13253684-autoservis-pelhrimov-s-r-o-pelhrimov.html"
+        ],
         "openingHoursSpecification": [
             {
                 "@type": "OpeningHoursSpecification",
-                "dayOfWeek": ["Monday","Tuesday","Wednesday","Thursday","Friday"],
+                "dayOfWeek": [
+                    "Monday",
+                    "Tuesday",
+                    "Wednesday",
+                    "Thursday",
+                    "Friday"
+                ],
                 "opens": "07:00",
                 "closes": "15:30"
             }
         ],
         "areaServed": [
-            { "@type": "City", "name": "Pelhřimov" },
-            { "@type": "City", "name": "Humpolec" },
-            { "@type": "City", "name": "Pacov" },
-            { "@type": "City", "name": "Kamenice nad Lipou" },
-            { "@type": "City", "name": "Počátky" },
-            { "@type": "AdministrativeArea", "name": "Okres Pelhřimov" },
-            { "@type": "AdministrativeArea", "name": "Kraj Vysočina" }
+            {
+                "@type": "City",
+                "name": "Pelhřimov"
+            },
+            {
+                "@type": "City",
+                "name": "Humpolec"
+            },
+            {
+                "@type": "City",
+                "name": "Pacov"
+            },
+            {
+                "@type": "City",
+                "name": "Kamenice nad Lipou"
+            },
+            {
+                "@type": "City",
+                "name": "Počátky"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Okres Pelhřimov"
+            },
+            {
+                "@type": "AdministrativeArea",
+                "name": "Kraj Vysočina"
+            }
         ],
         "hasOfferCatalog": {
             "@type": "OfferCatalog",
             "name": "Služby autoservisu",
             "itemListElement": [
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Pneuservis", "url": "https://autoservispelhrimov.cz/pneuservis/" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Karosářské práce", "url": "https://autoservispelhrimov.cz/karosarske-prace/" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Příprava na STK", "url": "https://autoservispelhrimov.cz/priprava-stk/" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Diagnostika motoru", "url": "https://autoservispelhrimov.cz/diagnostika/" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Údržba a servis", "url": "https://autoservispelhrimov.cz/udrzba-a-servis/" } },
-                { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Geometrie kol", "url": "https://autoservispelhrimov.cz/geometrie/" } }
+                {
+                    "@type": "Offer",
+                    "priceCurrency": "CZK",
+                    "description": "Přezutí a vyvážení osobního vozu, konečná cena podle počtu vyvažovacích závaží.",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "1000",
+                        "priceCurrency": "CZK",
+                        "valueAddedTaxIncluded": true
+                    },
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Pneuservis",
+                        "url": "https://autoservispelhrimov.cz/pneuservis/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Karosářské práce",
+                        "url": "https://autoservispelhrimov.cz/karosarske-prace/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Příprava na STK",
+                        "url": "https://autoservispelhrimov.cz/priprava-stk/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "price": "1000",
+                    "priceCurrency": "CZK",
+                    "description": "Kompletní vyčtení chybových kódů řídicích jednotek všech značek a návrh řešení.",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Diagnostika motoru",
+                        "url": "https://autoservispelhrimov.cz/diagnostika/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "description": "Hodinová sazba za mechanické práce, díly a náplně zvlášť.",
+                    "priceSpecification": {
+                        "@type": "UnitPriceSpecification",
+                        "price": "550",
+                        "priceCurrency": "CZK",
+                        "unitCode": "HUR",
+                        "unitText": "hodina",
+                        "valueAddedTaxIncluded": true
+                    },
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Údržba a servis",
+                        "url": "https://autoservispelhrimov.cz/udrzba-a-servis/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "priceCurrency": "CZK",
+                    "description": "Měření a nastavení geometrie nápravy laserovým přístrojem.",
+                    "priceSpecification": {
+                        "@type": "PriceSpecification",
+                        "minPrice": "1200",
+                        "priceCurrency": "CZK",
+                        "valueAddedTaxIncluded": true
+                    },
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Geometrie kol",
+                        "url": "https://autoservispelhrimov.cz/geometrie/"
+                    }
+                },
+                {
+                    "@type": "Offer",
+                    "description": "Kontrola, dezinfekce, doplnění chladiva i opravy. Cena podle typu opravy, vždy předem.",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Servis klimatizace"
+                    }
+                }
             ]
+        }
+    }
+    </script>
+
+    <!-- JSON-LD: WebSite -->
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "WebSite",
+        "@id": "https://autoservispelhrimov.cz/#website",
+        "url": "https://autoservispelhrimov.cz/",
+        "name": "Autoservis Pelhřimov",
+        "alternateName": [
+            "Rychloservis Pelhřimov",
+            "autoservispelhrimov.cz"
+        ],
+        "inLanguage": "cs-CZ",
+        "publisher": {
+            "@id": "https://autoservispelhrimov.cz/#autoservis"
         }
     }
     </script>
@@ -100,11 +241,54 @@
         "@context": "https://schema.org",
         "@type": "FAQPage",
         "mainEntity": [
-            { "@type": "Question", "name": "Musím se objednat předem?", "acceptedAnswer": { "@type": "Answer", "text": "Jako rychloservis přijímáme zákazníky i bez objednání. Pro složitější opravy doporučujeme zavolat předem na 606 389 116, abychom si na vás vyhradili čas." } },
-            { "@type": "Question", "name": "Opravujete všechny značky aut?", "acceptedAnswer": { "@type": "Answer", "text": "Ano, opravujeme osobní i užitková vozidla všech značek. Zvládneme také nákladní dopravu a motocykly." } },
-            { "@type": "Question", "name": "Pomůžete mi s vyřízením pojistné události?", "acceptedAnswer": { "@type": "Answer", "text": "Samozřejmě. Vyřízení pojistných událostí nabízíme na klíč — od dokumentace poškození přes komunikaci s pojišťovnou až po kompletní opravu." } },
-            { "@type": "Question", "name": "Jaká je vaše otevírací doba?", "acceptedAnswer": { "@type": "Answer", "text": "Jsme tu pro vás pondělí až pátek od 7:00 do 15:30. O víkendech pracujeme po dohodě — stačí zavolat." } },
-            { "@type": "Question", "name": "Nabízíte odvoz vozidla po opravě?", "acceptedAnswer": { "@type": "Answer", "text": "Ano, zajistíme odvoz i přistavení vozidla po opravě. Domluvíme se na podmínkách individuálně." } }
+            {
+                "@type": "Question",
+                "name": "Musím se objednat předem?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Jako rychloservis přijímáme zákazníky i bez objednání. Pro složitější opravy doporučujeme zavolat předem na 606 389 116, abychom si na vás vyhradili čas."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Opravujete všechny značky aut?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ano, opravujeme osobní i užitková vozidla všech značek. Zvládneme také nákladní dopravu a motocykly."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Kolik stojí diagnostika a hodina práce?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Diagnostika stojí 1 000 Kč, hodina mechanických prací 550 Kč. Ceny jsou včetně DPH, díly a náplně účtujeme zvlášť. Konečnou cenu potvrdíme vždy předem, kalkulace je zdarma."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Pomůžete mi s vyřízením pojistné události?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Samozřejmě. Vyřízení pojistných událostí nabízíme na klíč — od dokumentace poškození přes komunikaci s pojišťovnou až po kompletní opravu."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Jaká je vaše otevírací doba?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Otevřeno máme pondělí až pátek od 7:00 do 15:30. O víkendech pracujeme po dohodě, stačí zavolat."
+                }
+            },
+            {
+                "@type": "Question",
+                "name": "Nabízíte odvoz vozidla po opravě?",
+                "acceptedAnswer": {
+                    "@type": "Answer",
+                    "text": "Ano, zajistíme odvoz i přistavení vozidla po opravě. Domluvíme se na podmínkách individuálně."
+                }
+            }
         ]
     }
     </script>
@@ -499,12 +683,16 @@
                     <div class="faq-answer"><p>Ano, opravujeme osobní i&nbsp;užitková vozidla všech značek. Zvládneme také nákladní dopravu a&nbsp;motocykly.</p></div>
                 </details>
                 <details class="faq-item" data-animate>
+                    <summary class="faq-question">Kolik stojí diagnostika a&nbsp;hodina práce?</summary>
+                    <div class="faq-answer"><p>Diagnostika stojí 1&nbsp;000&nbsp;Kč, hodina mechanických prací 550&nbsp;Kč. Ceny jsou včetně DPH, díly a&nbsp;náplně účtujeme zvlášť. Konečnou cenu potvrdíme vždy předem, kalkulace je zdarma.</p></div>
+                </details>
+                <details class="faq-item" data-animate>
                     <summary class="faq-question">Pomůžete mi s&nbsp;vyřízením pojistné události?</summary>
                     <div class="faq-answer"><p>Samozřejmě. Vyřízení pojistných událostí nabízíme na klíč — od dokumentace poškození přes komunikaci s&nbsp;pojišťovnou až po kompletní opravu.</p></div>
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Jaká je vaše otevírací doba?</summary>
-                    <div class="faq-answer"><p>Jsme tu pro vás pondělí až pátek od 7:00 do 15:30. O&nbsp;víkendech pracujeme po dohodě — stačí zavolat.</p></div>
+                    <div class="faq-answer"><p>Otevřeno máme pondělí až pátek od 7:00 do 15:30. O&nbsp;víkendech pracujeme po dohodě, stačí zavolat.</p></div>
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Nabízíte odvoz vozidla po opravě?</summary>
