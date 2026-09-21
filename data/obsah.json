@@ -1,0 +1,11 @@
+{
+  "upraveno": "2026-09-21T20:30:00.000Z",
+  "ceny": {
+    "mechanicke-prace": { "cena": 550, "od": false, "text": "" },
+    "prezuti": { "cena": 1000, "od": true, "text": "" },
+    "geometrie": { "cena": 1200, "od": true, "text": "" },
+    "diagnostika": { "cena": 1000, "od": false, "text": "" },
+    "klimatizace": { "cena": null, "od": false, "text": "dle opravy" },
+    "stk": { "cena": null, "od": false, "text": "individuálně" }
+  }
+}

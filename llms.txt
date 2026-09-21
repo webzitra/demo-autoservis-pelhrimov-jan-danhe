@@ -11,11 +11,11 @@
 - Bez objednání: jako rychloservis bereme i zákazníky bez objednání, na složitější opravy je lepší zavolat předem.
 
 ## Ceník (orientační, včetně DPH, stav září 2026)
-- Mechanické práce: 550 Kč za hodinu, díly a náplně zvlášť
+- Mechanické práce: 550 Kč/hod, díly a náplně zvlášť
 - Diagnostika: 1 000 Kč (vyčtení chybových kódů řídicích jednotek všech značek a návrh řešení)
 - Přezutí a vyvážení osobního vozu: od 1 000 Kč, konečná cena podle počtu vyvažovacích závaží
 - Geometrie kol laserovým přístrojem: od 1 200 Kč
-- Servis klimatizace: podle typu opravy, cenu řekneme vždy předem
+- Servis klimatizace: dle opravy, cenu řekneme vždy předem
 - Příprava na STK: individuálně; vůz převezmeme, připravíme, odvezeme na STK a přivezeme zpět
 - Cenová kalkulace je zdarma, konečnou cenu vždy potvrdíme předem.
 

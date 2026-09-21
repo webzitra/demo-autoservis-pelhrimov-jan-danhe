@@ -129,18 +129,18 @@
             "itemListElement": [
                 {
                     "@type": "Offer",
-                    "priceCurrency": "CZK",
                     "description": "Přezutí a vyvážení osobního vozu, konečná cena podle počtu vyvažovacích závaží.",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Pneuservis",
+                        "url": "https://autoservispelhrimov.cz/pneuservis/"
+                    },
+                    "priceCurrency": "CZK",
                     "priceSpecification": {
                         "@type": "PriceSpecification",
                         "minPrice": "1000",
                         "priceCurrency": "CZK",
                         "valueAddedTaxIncluded": true
-                    },
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Pneuservis",
-                        "url": "https://autoservispelhrimov.cz/pneuservis/"
                     }
                 },
                 {
@@ -161,18 +161,24 @@
                 },
                 {
                     "@type": "Offer",
-                    "price": "1000",
-                    "priceCurrency": "CZK",
                     "description": "Kompletní vyčtení chybových kódů řídicích jednotek všech značek a návrh řešení.",
                     "itemOffered": {
                         "@type": "Service",
                         "name": "Diagnostika motoru",
                         "url": "https://autoservispelhrimov.cz/diagnostika/"
-                    }
+                    },
+                    "price": "1000",
+                    "priceCurrency": "CZK"
                 },
                 {
                     "@type": "Offer",
                     "description": "Hodinová sazba za mechanické práce, díly a náplně zvlášť.",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Údržba a servis",
+                        "url": "https://autoservispelhrimov.cz/udrzba-a-servis/"
+                    },
+                    "priceCurrency": "CZK",
                     "priceSpecification": {
                         "@type": "UnitPriceSpecification",
                         "price": "550",
@@ -180,27 +186,22 @@
                         "unitCode": "HUR",
                         "unitText": "hodina",
                         "valueAddedTaxIncluded": true
-                    },
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Údržba a servis",
-                        "url": "https://autoservispelhrimov.cz/udrzba-a-servis/"
                     }
                 },
                 {
                     "@type": "Offer",
-                    "priceCurrency": "CZK",
                     "description": "Měření a nastavení geometrie nápravy laserovým přístrojem.",
+                    "itemOffered": {
+                        "@type": "Service",
+                        "name": "Geometrie kol",
+                        "url": "https://autoservispelhrimov.cz/geometrie/"
+                    },
+                    "priceCurrency": "CZK",
                     "priceSpecification": {
                         "@type": "PriceSpecification",
                         "minPrice": "1200",
                         "priceCurrency": "CZK",
                         "valueAddedTaxIncluded": true
-                    },
-                    "itemOffered": {
-                        "@type": "Service",
-                        "name": "Geometrie kol",
-                        "url": "https://autoservispelhrimov.cz/geometrie/"
                     }
                 },
                 {
@@ -684,7 +685,7 @@
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Kolik stojí diagnostika a&nbsp;hodina práce?</summary>
-                    <div class="faq-answer"><p>Diagnostika stojí 1&nbsp;000&nbsp;Kč, hodina mechanických prací 550&nbsp;Kč. Ceny jsou včetně DPH, díly a&nbsp;náplně účtujeme zvlášť. Konečnou cenu potvrdíme vždy předem, kalkulace je zdarma.</p></div>
+                    <div class="faq-answer"><p>Diagnostika stojí <span data-castka="diagnostika">1&nbsp;000&nbsp;Kč</span>, hodina mechanických prací <span data-castka="mechanicke-prace">550&nbsp;Kč</span>. Ceny jsou včetně DPH, díly a&nbsp;náplně účtujeme zvlášť. Konečnou cenu potvrdíme vždy předem, kalkulace je zdarma.</p></div>
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Pomůžete mi s&nbsp;vyřízením pojistné události?</summary>
@@ -711,42 +712,42 @@
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Mechanické práce</h3>
-                        <span class="pricing-price">550&nbsp;Kč/hod</span>
+                        <span class="pricing-price" data-cena="mechanicke-prace">550&nbsp;Kč/hod</span>
                     </div>
                     <p>Hodinová sazba za&nbsp;mechanické práce: výměny olejů, filtrů, brzd i&nbsp;běžné opravy. Náplně a&nbsp;díly účtujeme zvlášť.</p>
                 </div>
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Přezutí + vyvážení</h3>
-                        <span class="pricing-price">od 1&nbsp;000&nbsp;Kč</span>
+                        <span class="pricing-price" data-cena="prezuti">od 1&nbsp;000&nbsp;Kč</span>
                     </div>
                     <p>Kompletní přezutí osobního vozu včetně vyvážení kol. Konečná cena podle počtu vyvažovacích závaží.</p>
                 </div>
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Geometrie kol</h3>
-                        <span class="pricing-price">od 1&nbsp;200&nbsp;Kč</span>
+                        <span class="pricing-price" data-cena="geometrie">od 1&nbsp;200&nbsp;Kč</span>
                     </div>
                     <p>Přesné měření a&nbsp;nastavení geometrie nápravy laserovým přístrojem: sbíhavost, odklon i&nbsp;záklon.</p>
                 </div>
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Diagnostika</h3>
-                        <span class="pricing-price">1&nbsp;000&nbsp;Kč</span>
+                        <span class="pricing-price" data-cena="diagnostika">1&nbsp;000&nbsp;Kč</span>
                     </div>
                     <p>Kompletní vyčtení chybových kódů řídicích jednotek všech značek a&nbsp;návrh řešení.</p>
                 </div>
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Servis klimatizace</h3>
-                        <span class="pricing-price">dle opravy</span>
+                        <span class="pricing-price" data-cena="klimatizace">dle opravy</span>
                     </div>
                     <p>Kontrola, dezinfekce, doplnění chladiva i&nbsp;opravy. Cenu stanovíme podle typu opravy, vždy předem.</p>
                 </div>
                 <div class="pricing-card" data-animate>
                     <div class="pricing-head">
                         <h3>Příprava na&nbsp;STK</h3>
-                        <span class="pricing-price">individuálně</span>
+                        <span class="pricing-price" data-cena="stk">individuálně</span>
                     </div>
                     <p>Kompletní zajištění: vůz od&nbsp;vás převezmeme, připravíme, odvezeme na&nbsp;STK a&nbsp;přivezeme zpět. Vy nemusíte nikam.</p>
                 </div>

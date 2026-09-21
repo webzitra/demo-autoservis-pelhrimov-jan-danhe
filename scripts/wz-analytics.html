@@ -1,0 +1,38 @@
+<!-- WZ-ANALYTICS-START (vkládá scripts/build.mjs; storage-free: žádné cookies ani
+     local/sessionStorage, anonymní počítadlo návštěv, dolistování a kliků → /admin/) -->
+<script>(function(){if(window.top!==window.self)return;
+if(!/(^|\.)autoservispelhrimov\.cz$/.test(location.hostname))return; // jen produkční doména (ne localhost ani náhledy Vercelu)
+var U='https://webzitra.cz/api/client-analytics',S='autoservis-pelhrimov';
+var sid=Math.random().toString(36).slice(2)+Math.random().toString(36).slice(2);
+var d=/Mobi|Android/i.test(navigator.userAgent)?'m':/Tablet|iPad/i.test(navigator.userAgent)?'t':'d';
+var r='direct';try{if(document.referrer){var h=new URL(document.referrer).hostname.replace(/^www\./,'');r=h===location.hostname.replace(/^www\./,'')?'interni':h}}catch(e){}
+var src=r;try{var q=new URLSearchParams(location.search);var us=q.get('utm_source');
+if(us){src=us.toLowerCase().slice(0,50);var um=q.get('utm_medium');if(um){src+='/'+um.toLowerCase().slice(0,30);
+var uc=q.get('utm_campaign');if(uc)src+='/'+uc.toLowerCase().slice(0,40)}}
+else if(q.get('fbclid')){src='meta-ad'}}catch(e){}
+function send(t,l){try{navigator.sendBeacon(U,JSON.stringify({s:S,p:location.pathname,r:r,d:d,sid:sid,t:t,l:l,src:src}))}catch(e){}}
+send('pageview');
+try{var secs={'sluzby':'sluzby','cenik':'cenik','recenze':'recenze','faq':'faq','kontakt':'kontakt'},seen={};
+if('IntersectionObserver' in window){var io=new IntersectionObserver(function(es){es.forEach(function(en){
+if(!en.isIntersecting)return;var l=secs[en.target.id];if(!l||seen[l])return;seen[l]=1;send('section',l);io.unobserve(en.target)})},
+{rootMargin:'0px 0px -25% 0px'});
+Object.keys(secs).forEach(function(id){var el=document.getElementById(id);if(el)io.observe(el)})}}catch(e){}
+var MISTA={'hero':'uvod','o-nas':'o-nas','sluzby':'sluzby','cenik':'cenik','galerie':'galerie','recenze':'recenze','faq':'faq','kontakt':'kontakt'};
+function misto(el){if(el.closest('.mobile-cta'))return 'lista';if(el.closest('.navbar'))return 'menu';if(el.closest('.footer'))return 'paticka';
+var s=el.closest('section[id]');if(s&&MISTA[s.id])return MISTA[s.id];
+var p=location.pathname.replace(/^\/+|\/+$/g,'');return p||'uvod'}
+document.addEventListener('click',function(e){
+var a=e.target&&e.target.closest?e.target.closest('a[href]'):null;if(!a)return;
+var h=a.getAttribute('href')||'',l='';
+if(h.indexOf('tel:')===0)l='kontakt:telefon';
+else if(h.indexOf('wa.me/')>-1||h.indexOf('whatsapp')>-1)l='kontakt:whatsapp';
+else if(h.indexOf('sms:')===0)l='kontakt:sms';
+else if(h.indexOf('mailto:')===0)l='kontakt:email';
+else if(h.indexOf('maps.google.')>-1||h.indexOf('google.com/maps')>-1)l='navigace:google-recenze';
+else{var m=h.match(/^(?:https?:\/\/autoservispelhrimov\.cz)?(?:\.\.)?\/?(pneuservis|karosarske-prace|priprava-stk|diagnostika|udrzba-a-servis|geometrie)\/?(?:[#?].*)?$/);
+if(m)l='navigace:sluzba-'+m[1]}
+if(l)send('click',l+':'+misto(a))},true);
+document.addEventListener('submit',function(e){var f=e.target;
+if(f&&f.classList&&f.classList.contains('contact-form'))send('click','kontakt:formular:'+misto(f))},true);
+})();</script>
+<!-- WZ-ANALYTICS-END -->

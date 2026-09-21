@@ -40,3 +40,9 @@ Netlify auto-deploy se postará o zbytek. Web je live za ~30s.
 
 ## Deploy URL
 https://wz-demo-autoservis-pelhrimov-jan-danhe.netlify.app
+
+## Build, ceník a měření (od 21. 9. 2026)
+- Web se na Vercelu **sestavuje**: `node scripts/build.mjs` → `dist/` (vercel.json `buildCommand` + `outputDirectory`). Deploy z `main`. Lokálně: `node scripts/build.mjs` a servírovat `dist/`.
+- **Ceny se mění jen v `data/obsah.json`**, normálně přes admin `/admin/` (→ `app.webzitra.cz/api/client-content` → commit do main → Vercel přestaví web). Build je vypíše do karet ceníku (`data-cena`), částek v FAQ (`data-castka`), FAQ a nabídek ve strukturovaných datech (úvod + podstránky) a do `llms.txt`. **Ceny v HTML ručně neměnit**, build je přepíše. Neplatný obsah build zastaví a na webu zůstane poslední funkční verze.
+- Měření: `scripts/wz-analytics.html` vkládá build do všech stránek kromě `/admin/`, měří jen na produkční doméně. Kliky ve tvaru `skupina:typ:místo` (např. `kontakt:telefon:lista`), statistiky z `client_site_stats` (platforma webzitra-v2, tabulka `client_site_events`, slug `autoservis-pelhrimov`).
+- Admin `/admin/`: přístupový kód = `client_sites.admin_key` (Lukáš má v `~/.claude/ops/klienti/autoservis-pelhrimov-admin.txt`).
