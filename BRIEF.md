@@ -55,16 +55,18 @@ Společnost byla založena v roce 2013 a za dobu svého působení si získala s
 | 8 | photo-8.jpg | Auto | / |
 
 
-## Recenze (Google Maps — 4.2★, 66 hodnocení)
+## Recenze (Google Maps — 4,3★, 77 hodnocení, stav k 21. 9. 2026)
 > Zdroj: Google Maps | [Zobrazit na mapě](https://maps.google.com/?cid=5687577743439231713)
 
-1. "Byla jsem na cestě do Pelhřimova, když jsem si způsobila závadu vlastní vinou, která musela být okamžitě řešena. Z autoservisu se mi do 5 min ozvali zpátky a řekli ať auto dovezu ihned. Za hodinu jsem měla tu část auta nejen opravenou, ale i pročištěnou a mě spadl obrovský kámen ze srdce. Ještě jedn" — **Terka Menclová** (5★, před 3 měsíci)
-2. "Včera ráno jsem nenastartoval a potřeboval jsem řešit rychle opravu, protože musím jezdit služebně do Prahy a vozit dítě. Naštěstí jsem kontaktoval pana majitele, který mne zachránil, protože si udělali na mne čas včas 😉 super komunikace, šikovný mechanik, i cena. Příště už budu vědět, kam mám jít " — **Josef Myslivec** (5★, před 5 měsíci)
-3. "Za mě naprostá paráda. Byli jsme s rodinkou na cestě z Tábora na Jihlavu, když jsem měli poruchu. Sotva jsem dojeli k servisu. Když jsem přišel požádat o pomoc chlapy neváhali a okamžitě se dali do díla. Nikdy jim to nezapomenu. Kdybych mohl dám jim tisíc hvězd 👍👍👍👍👍" — **Jakub Slavik** (5★, před měsícem)
-4. "Objevily se mi při jízdě drobné vibrace celého auta. Těžko zjistitelná příčina. Přesto se jí důkladnou prohlídkou a hledáním příčiny podařilo vibrace odstranit. Ty byly způsobeny špatným vyvážením kol a rozhozenou geometrií. Celkově jsem velmi spokojen." — **Martin Jůzl** (5★, před 4 měsíci)
-5. "Tenhle autoservis vřele doporučujeme.Mají milí a vstřícný přístup.Ochotně pomůžou.Za nás velký palec nahoru 👍👍👍👍👍" — **Ludmila Slavíková** (5★, před měsícem)
+> **Pravidlo:** na webu jsou jen skutečné recenze z Google, doslova (jméno, hvězdy, datum, text i s překlepy). Nic nevymýšlet ani nedoplňovat. Při aktualizaci přepiš i průměr a počet: odznak u recenzí, tlačítko „Zobrazit všech … hodnocení“, čísla v sekci O nás a kartu „Servisujeme všechny značky“. Recenze z Google nedávat do JSON-LD (Google zakazuje značkovat recenze převzaté z jiných webů).
 
-> **Instrukce pro Claude**: Použij tyto skutečné recenze v sekci #recenze. Zachovej přesné texty a jména autorů. Pokud jich je méně než 3, doplň 1-2 syntetické recenze ve stejném stylu.
+Na webu je 6 nejnovějších recenzí s textem (všechny 5★):
+1. **Jiri Vobora** (15. 8. 2026) — imobilizér na dovolené, opraveno do druhého dne
+2. **Jana Edrova** (10. 8. 2026) — klimatizace před cestou do zahraničí, hotovo za pár hodin
+3. **Jirka** (15. 7. 2026) — porucha 100 km od domova, přednostní oprava
+4. **Jiří Chmelenský** (25. 8. 2026) — rychlá diagnostika okruhu chlazení
+5. **Milan Šenkýř** (20. 8. 2026) — profi přístup, dobrá káva pro zákazníky
+6. **Mira Kaiser** (23. 6. 2026) — upadlý výfuk vyřešen za 8 hodin
 
 ## Design
 - **Šablona**: firma

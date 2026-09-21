@@ -173,7 +173,7 @@
                 }
             });
         }, { threshold: 0.3 });
-        counterEls.forEach(function(el) { counterObserver.observe(el); });
+        counterEls.forEach(function(el) { el.textContent = '0'; counterObserver.observe(el); });
     }
 
 })();
