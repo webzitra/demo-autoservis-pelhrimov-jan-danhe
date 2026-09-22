@@ -693,7 +693,7 @@
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Jaká je vaše otevírací doba?</summary>
-                    <div class="faq-answer"><p>Otevřeno máme pondělí až pátek od 7:00 do 15:30. O&nbsp;víkendech pracujeme po dohodě, stačí zavolat.</p></div>
+                    <div class="faq-answer"><p><span data-doba="veta">Otevřeno máme pondělí až pátek od 7:00 do 15:30. O&nbsp;víkendech pracujeme po dohodě, stačí zavolat.</span></p></div>
                 </details>
                 <details class="faq-item" data-animate>
                     <summary class="faq-question">Nabízíte odvoz vozidla po opravě?</summary>
@@ -812,7 +812,7 @@
                             <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>
                             <div>
                                 <strong>Otevírací doba</strong>
-                                <span>Po–Pá: 7:00 – 15:30</span>
+                                <span data-doba="kratce">Po–Pá 7:00–15:30</span>
                                 <span class="contact-note">So–Ne: dle dohody</span>
                             </div>
                         </div>
@@ -820,14 +820,11 @@
                 </div>
                 <div class="contact-right">
                     <h3 class="contact-form-title">Napište nám</h3>
-                    <form class="contact-form" action="https://formsubmit.co/autoservispelhrimov@seznam.cz" method="POST">
-                        <input type="hidden" name="_subject" value="Nová zpráva z webu autoservispelhrimov.cz">
-                        <input type="hidden" name="_next" value="https://autoservispelhrimov.cz/dekujeme/">
-                        <input type="hidden" name="_captcha" value="false">
-                        <input type="text" name="_honey" style="display:none">
+                    <form class="contact-form" method="post">
+                        <input type="text" name="web_honey" tabindex="-1" autocomplete="off" aria-hidden="true" style="position:absolute;left:-9999px;width:1px;height:1px;opacity:0">
                         <div class="form-group">
                             <label for="name">Jméno</label>
-                            <input type="text" id="name" name="name" required placeholder="Vaše jméno">
+                            <input type="text" id="name" name="Jméno" required placeholder="Vaše jméno">
                         </div>
                         <div class="form-group">
                             <label for="email">Email</label>
@@ -835,17 +832,18 @@
                         </div>
                         <div class="form-group">
                             <label for="phone">Telefon</label>
-                            <input type="tel" id="phone" name="phone" placeholder="+420 000 000 000">
+                            <input type="tel" id="phone" name="Telefon" placeholder="+420 000 000 000">
                         </div>
                         <div class="form-row">
                             <div class="form-group">
                                 <label for="service">Typ služby</label>
-                                <select id="service" name="service">
+                                <select id="service" name="Služba">
                                     <option value="">Vyberte službu</option>
                                     <option>Pneuservis / přezutí</option>
                                     <option>Geometrie kol</option>
                                     <option>Výměna oleje a&nbsp;filtrů</option>
                                     <option>Diagnostika</option>
+                                    <option>Servis klimatizace</option>
                                     <option>Příprava na&nbsp;STK</option>
                                     <option>Karosářské práce</option>
                                     <option>Pojistná událost</option>
@@ -854,16 +852,33 @@
                             </div>
                             <div class="form-group">
                                 <label for="preferred-date">Preferovaný termín</label>
-                                <input type="date" id="preferred-date" name="preferred_date">
+                                <input type="date" id="preferred-date" name="Termín">
                             </div>
                         </div>
                         <div class="form-group">
                             <label for="message">Zpráva</label>
-                            <textarea id="message" name="message" rows="4" required placeholder="Popište, s čím vám můžeme pomoci..."></textarea>
+                            <textarea id="message" name="Zpráva" rows="4" required placeholder="Popište, s čím vám můžeme pomoci…"></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary btn-full">Odeslat poptávku</button>
+                        <p class="form-msg" role="alert" hidden style="color:#b3261e;font-weight:600;margin-top:10px"></p>
                         <p class="form-note">Odpovídáme zpravidla do&nbsp;jedné hodiny v&nbsp;pracovní době. Mimo otevírací dobu nejpozději druhý pracovní den.</p>
+                        <p class="form-note">Údaje z&nbsp;formuláře použijeme jen k&nbsp;vyřízení vaší poptávky. Správce údajů: AUTOSERVIS PELHŘIMOV s.&nbsp;r.&nbsp;o., IČO 05943019.</p>
+                        <noscript><p class="form-note">Formulář potřebuje zapnutý JavaScript. Napište nám na autoservispelhrimov@seznam.cz nebo zavolejte 606&nbsp;389&nbsp;116.</p></noscript>
                     </form>
+                    <!-- WZ-LEADS: poptávka se uloží na platformě WebZítra (i když e-mail selže) a přijde e-mailem; vidět je v /admin/ -->
+                    <script>(function(){var f=document.querySelector('.contact-form');if(!f)return;
+                    var API='https://app.webzitra.cz/api/client-leads',msg=f.querySelector('.form-msg');
+                    f.addEventListener('submit',function(e){e.preventDefault();e.stopImmediatePropagation();
+                    var hp=f.querySelector('[name="web_honey"]');if(hp&&hp.value){location.href='/dekujeme/';return}
+                    var data={siteId:'autoservis-pelhrimov',page:location.pathname};
+                    new FormData(f).forEach(function(v,k){if(k!=='web_honey'&&typeof v==='string'&&v.trim())data[k]=v.trim().slice(0,500)});
+                    var b=f.querySelector('button[type="submit"]'),t=b.textContent;b.disabled=true;b.textContent='Odesílám…';msg.hidden=true;
+                    fetch(API,{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify(data)})
+                    .then(function(r){return r.json().catch(function(){return{}}).then(function(j){return{ok:r.ok,j:j}})})
+                    .then(function(x){if(x.ok&&x.j.success){location.href='/dekujeme/';return}var er=new Error(x.j.error||'');er.api=true;throw er})
+                    .catch(function(err){b.disabled=false;b.textContent=t;msg.hidden=false;
+                    msg.textContent=(err&&err.api&&err.message?err.message:'Zprávu se nepodařilo odeslat, zkuste to prosím znovu.')+' Případně zavolejte 606 389 116.'})},true);
+                    })();</script>
                 </div>
             </div>
         </div>

@@ -1,11 +1,78 @@
 {
   "upraveno": "2026-09-21T20:30:00.000Z",
   "ceny": {
-    "mechanicke-prace": { "cena": 550, "od": false, "text": "" },
-    "prezuti": { "cena": 1000, "od": true, "text": "" },
-    "geometrie": { "cena": 1200, "od": true, "text": "" },
-    "diagnostika": { "cena": 1000, "od": false, "text": "" },
-    "klimatizace": { "cena": null, "od": false, "text": "dle opravy" },
-    "stk": { "cena": null, "od": false, "text": "individuálně" }
+    "mechanicke-prace": {
+      "cena": 550,
+      "od": false,
+      "text": ""
+    },
+    "prezuti": {
+      "cena": 1000,
+      "od": true,
+      "text": ""
+    },
+    "geometrie": {
+      "cena": 1200,
+      "od": true,
+      "text": ""
+    },
+    "diagnostika": {
+      "cena": 1000,
+      "od": false,
+      "text": ""
+    },
+    "klimatizace": {
+      "cena": null,
+      "od": false,
+      "text": "dle opravy"
+    },
+    "stk": {
+      "cena": null,
+      "od": false,
+      "text": "individuálně"
+    }
+  },
+  "oteviraci_doba": {
+    "po": {
+      "otevreno": true,
+      "od": "07:00",
+      "do": "15:30"
+    },
+    "ut": {
+      "otevreno": true,
+      "od": "07:00",
+      "do": "15:30"
+    },
+    "st": {
+      "otevreno": true,
+      "od": "07:00",
+      "do": "15:30"
+    },
+    "ct": {
+      "otevreno": true,
+      "od": "07:00",
+      "do": "15:30"
+    },
+    "pa": {
+      "otevreno": true,
+      "od": "07:00",
+      "do": "15:30"
+    },
+    "so": {
+      "otevreno": false,
+      "od": "",
+      "do": ""
+    },
+    "ne": {
+      "otevreno": false,
+      "od": "",
+      "do": ""
+    },
+    "poznamka": "O víkendech pracujeme po dohodě, stačí zavolat."
+  },
+  "oznameni": {
+    "text": "",
+    "od": "",
+    "do": ""
   }
 }

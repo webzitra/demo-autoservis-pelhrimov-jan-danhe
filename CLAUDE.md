@@ -41,8 +41,9 @@ Netlify auto-deploy se postará o zbytek. Web je live za ~30s.
 ## Deploy URL
 https://wz-demo-autoservis-pelhrimov-jan-danhe.netlify.app
 
-## Build, ceník a měření (od 21. 9. 2026)
+## Build, obsah z adminu, poptávky a měření (od 22. 9. 2026)
 - Web se na Vercelu **sestavuje**: `node scripts/build.mjs` → `dist/` (vercel.json `buildCommand` + `outputDirectory`). Deploy z `main`. Lokálně: `node scripts/build.mjs` a servírovat `dist/`.
-- **Ceny se mění jen v `data/obsah.json`**, normálně přes admin `/admin/` (→ `app.webzitra.cz/api/client-content` → commit do main → Vercel přestaví web). Build je vypíše do karet ceníku (`data-cena`), částek v FAQ (`data-castka`), FAQ a nabídek ve strukturovaných datech (úvod + podstránky) a do `llms.txt`. **Ceny v HTML ručně neměnit**, build je přepíše. Neplatný obsah build zastaví a na webu zůstane poslední funkční verze.
-- Měření: `scripts/wz-analytics.html` vkládá build do všech stránek kromě `/admin/`, měří jen na produkční doméně. Kliky ve tvaru `skupina:typ:místo` (např. `kontakt:telefon:lista`), statistiky z `client_site_stats` (platforma webzitra-v2, tabulka `client_site_events`, slug `autoservis-pelhrimov`).
-- Admin `/admin/`: přístupový kód = `client_sites.admin_key` (Lukáš má v `~/.claude/ops/klienti/autoservis-pelhrimov-admin.txt`).
+- **Ceník, otevírací dobu a oznámení mění klient v `/admin/`** → uloží se na platformu (`client_sites.content`) → platforma spustí nové nasazení → build si obsah stáhne z `https://app.webzitra.cz/api/client-content?site=autoservis-pelhrimov` a vypíše ho do karet ceníku (`data-cena`), částek (`data-castka`), otevírací doby (`data-doba`), FAQ a strukturovaných dat, `llms.txt` a lišty s oznámením. `data/obsah.json` v repu = jen výchozí hodnoty pro sekce, které v adminu uložené nejsou. **Ceny ani dobu v HTML ručně neměnit**, build je přepíše. Na Vercelu nedostupné API nebo neplatný obsah build zastaví, na webu zůstane poslední verze.
+- **Formulář** posílá poptávky na `app.webzitra.cz/api/client-leads` (WZ-LEADS): uloží se do DB (`client_site_leads`) a pak odejdou e-mailem na `client_sites.notify_email`. Klient je vidí v `/admin/` → Poptávky.
+- Měření: `scripts/wz-analytics.html` vkládá build do všech stránek kromě `/admin/`, měří jen na produkční doméně. Kliky `skupina:typ:místo` (např. `kontakt:telefon:lista`), sekce se počítá po 1 s na obrazovce.
+- Admin `/admin/`: heslo = `client_sites.admin_key` (Lukáš má v `~/.claude/ops/klienti/autoservis-pelhrimov-admin.txt`).

@@ -11,57 +11,40 @@
   <meta name="theme-color" content="#0c345f">
   <style>
     :root {
-      --navy: #0c345f;
-      --primary: #1e4080;
-      --gold: #c9a227;
-      --bg: #f4f6fa;
-      --card: #ffffff;
-      --ink: #1a1a2e;
-      --muted: #5a6070;
-      --line: rgba(26, 26, 46, 0.1);
-      --ok: #1f7a4d;
-      --err: #b3261e;
+      --navy: #0c345f; --primary: #1e4080; --gold: #c9a227; --bg: #f4f6fa; --card: #ffffff;
+      --ink: #1a1a2e; --muted: #5a6070; --line: rgba(26, 26, 46, 0.1); --ok: #1f7a4d; --err: #b3261e;
     }
     * { margin: 0; padding: 0; box-sizing: border-box; }
-    body {
-      background: var(--bg); color: var(--ink);
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif;
-      font-size: 15px; line-height: 1.5; min-height: 100vh;
-    }
-    .wrap { max-width: 820px; margin: 0 auto; padding: 24px 16px 60px; }
+    body { background: var(--bg); color: var(--ink); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, system-ui, sans-serif; font-size: 15px; line-height: 1.5; min-height: 100vh; }
+    .wrap { max-width: 860px; margin: 0 auto; padding: 22px 16px 60px; }
     h1 { font-size: 1.35rem; font-weight: 800; color: var(--navy); letter-spacing: -0.01em; }
     h2 { font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
     h2 small { color: var(--muted); font-size: 0.78rem; font-weight: 500; }
     .sub { color: var(--muted); font-size: 0.85rem; }
-    .btn {
-      font: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer;
-      border: 1.5px solid var(--primary); border-radius: 10px;
-      background: var(--card); color: var(--primary); padding: 9px 16px; white-space: nowrap;
-    }
+    .btn { font: inherit; font-weight: 700; font-size: 0.9rem; cursor: pointer; border: 1.5px solid var(--primary); border-radius: 10px; background: var(--card); color: var(--primary); padding: 9px 16px; white-space: nowrap; }
     .btn:hover { background: var(--primary); color: #fff; }
     .btn-primary { background: var(--gold); border-color: var(--gold); color: var(--ink); }
     .btn-primary:hover { background: #b8931f; border-color: #b8931f; color: var(--ink); }
+    .btn-small { padding: 6px 12px; font-size: 0.82rem; border-radius: 8px; }
     .btn:disabled { opacity: 0.45; cursor: default; }
-    .btn:focus-visible, input:focus-visible, select:focus-visible, .tab:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
+    .btn:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible, .tab:focus-visible, .chip:focus-visible { outline: 2px solid var(--primary); outline-offset: 2px; }
     .linklike { background: none; border: none; font: inherit; font-size: 0.85rem; color: var(--muted); text-decoration: underline; cursor: pointer; }
     [hidden] { display: none !important; }
 
-    /* přihlášení */
     .login { max-width: 380px; margin: 12vh auto 0; background: var(--card); border-radius: 16px; padding: 30px 26px; box-shadow: 0 10px 30px rgba(12, 52, 95, 0.1); text-align: center; }
     .login img { width: 56px; height: 56px; margin-bottom: 12px; }
     .login p { color: var(--muted); font-size: 0.9rem; margin: 4px 0 18px; }
-    .login input { width: 100%; font: inherit; padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 10px; margin-bottom: 12px; text-align: center; letter-spacing: 0.08em; }
+    .login input { width: 100%; font: inherit; padding: 11px 14px; border: 1.5px solid var(--line); border-radius: 10px; margin-bottom: 12px; text-align: center; letter-spacing: 0.06em; }
     .login .btn { width: 100%; padding: 11px; }
     .msg-err { color: var(--err); font-size: 0.88rem; margin-top: 10px; min-height: 1.3em; }
 
-    /* hlavička a záložky */
-    .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 18px; }
+    .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
     .top a { color: var(--primary); font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
-    .tabs { display: flex; gap: 6px; border-bottom: 2px solid var(--line); margin-bottom: 22px; }
-    .tab { font: inherit; font-weight: 700; background: none; border: none; padding: 10px 14px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; }
+    .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--line); margin-bottom: 20px; overflow-x: auto; }
+    .tab { font: inherit; font-weight: 700; background: none; border: none; padding: 10px 12px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; }
     .tab[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
+    .badge { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 10px; background: var(--err); color: #fff; font-size: 0.75rem; line-height: 20px; text-align: center; }
 
-    /* dlaždice a karty */
     .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
     @media (min-width: 640px) { .tiles { grid-template-columns: repeat(4, 1fr); } }
     .tile { background: var(--card); border-radius: 14px; padding: 14px 14px 12px; box-shadow: 0 3px 12px rgba(12, 52, 95, 0.06); }
@@ -72,8 +55,8 @@
     .tile-gold .lbl { color: rgba(255, 255, 255, 0.8); }
     section.block { margin-bottom: 26px; }
     .card { background: var(--card); border-radius: 14px; padding: 14px 16px; box-shadow: 0 3px 12px rgba(12, 52, 95, 0.06); }
+    .card + .card { margin-top: 14px; }
 
-    /* cesta zákazníka */
     .step { display: flex; align-items: center; gap: 12px; padding: 10px 2px; border-top: 1px solid var(--line); }
     .step:first-child { border-top: none; }
     .step-no { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--bg); color: var(--primary); font-weight: 800; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
@@ -81,14 +64,10 @@
     .step-what small { display: block; color: var(--muted); font-size: 0.76rem; font-weight: 500; }
     .step-num { font-weight: 800; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
     .step-num small { color: var(--muted); font-weight: 600; font-size: 0.78rem; margin-left: 4px; }
-
-    /* graf */
     .chart { display: flex; align-items: flex-end; gap: 2px; height: 110px; }
     .bar { flex: 1; min-width: 3px; max-width: 34px; background: var(--primary); border-radius: 3px 3px 0 0; }
     .bar.zero { background: var(--line); height: 2px !important; }
     .chart-x { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.72rem; margin-top: 6px; }
-
-    /* tabulky */
     table { width: 100%; border-collapse: collapse; }
     td { padding: 9px 2px; border-top: 1px solid var(--line); vertical-align: middle; }
     tr:first-child td { border-top: none; }
@@ -97,31 +76,57 @@
     .rowbar { display: block; height: 4px; border-radius: 2px; background: var(--gold); margin-top: 5px; }
     .empty { color: var(--muted); font-size: 0.9rem; }
     .devices { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
-    .note { color: var(--muted); font-size: 0.8rem; margin-top: 18px; line-height: 1.55; }
+    .note { color: var(--muted); font-size: 0.8rem; margin-top: 16px; line-height: 1.55; }
     .footrow { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; gap: 12px; }
 
-    /* ceník */
-    .intro { color: var(--muted); font-size: 0.9rem; margin-bottom: 16px; }
-    .pol { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 14px 0; border-top: 1px solid var(--line); }
-    .pol:first-child { border-top: none; padding-top: 4px; }
-    @media (min-width: 640px) { .pol { grid-template-columns: 200px 1fr; align-items: center; } }
+    /* poptávky */
+    .chips { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 14px; }
+    .chip { font: inherit; font-size: 0.85rem; font-weight: 600; border: 1.5px solid var(--line); background: var(--card); color: var(--muted); border-radius: 999px; padding: 5px 12px; cursor: pointer; }
+    .chip[aria-pressed="true"] { border-color: var(--navy); color: var(--navy); background: #e8edf6; }
+    .lead { border-left: 4px solid var(--gold); }
+    .lead.done { border-left-color: var(--line); opacity: 0.85; }
+    .lead.spam { border-left-color: var(--err); opacity: 0.7; }
+    .lead-head { display: flex; justify-content: space-between; gap: 10px; align-items: baseline; flex-wrap: wrap; }
+    .lead-name { font-weight: 800; font-size: 1.02rem; }
+    .lead-when { color: var(--muted); font-size: 0.8rem; }
+    .lead-links { display: flex; flex-wrap: wrap; gap: 8px 16px; margin: 6px 0; }
+    .lead-links a { color: var(--primary); font-weight: 700; }
+    .lead-row { font-size: 0.9rem; margin-top: 3px; }
+    .lead-row b { color: var(--muted); font-weight: 600; }
+    .lead-msg { white-space: pre-wrap; background: var(--bg); border-radius: 10px; padding: 10px 12px; margin-top: 8px; font-size: 0.92rem; }
+    .lead-actions { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 10px; }
+    .tag { font-size: 0.72rem; font-weight: 700; border-radius: 6px; padding: 1px 7px; margin-left: 6px; vertical-align: 2px; }
+    .tag-new { background: var(--gold); color: var(--ink); }
+
+    /* úprava webu */
+    .intro { color: var(--muted); font-size: 0.9rem; margin-bottom: 14px; }
+    .pol { display: grid; grid-template-columns: 1fr; gap: 8px; padding: 12px 0; border-top: 1px solid var(--line); }
+    .pol:first-of-type { border-top: none; padding-top: 4px; }
+    @media (min-width: 640px) { .pol { grid-template-columns: 190px 1fr; align-items: center; } }
     .pol-name { font-weight: 700; }
     .pol-name small { display: block; color: var(--muted); font-size: 0.8rem; font-weight: 500; }
     .pol-ctrl { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; }
-    .pol-ctrl select, .pol-ctrl input[type="number"], .pol-ctrl input[type="text"] {
-      font: inherit; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 9px; background: #fff;
-    }
+    .pol-ctrl select, .pol-ctrl input[type="number"], .pol-ctrl input[type="text"], .pol-ctrl input[type="time"], .pol-ctrl input[type="date"], .field textarea, .field input {
+      font: inherit; padding: 8px 10px; border: 1.5px solid var(--line); border-radius: 9px; background: #fff; }
     .pol-ctrl input[type="number"] { width: 120px; font-weight: 700; }
     .pol-ctrl input[type="text"] { width: 220px; max-width: 100%; }
-    .pol-ctrl label.od { display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem; cursor: pointer; }
+    .pol-ctrl label.chk { display: inline-flex; align-items: center; gap: 5px; font-size: 0.9rem; cursor: pointer; }
     .pol-ctrl .unit { color: var(--muted); font-weight: 600; }
     .pol.invalid input { border-color: var(--err); }
     .pol-err { color: var(--err); font-size: 0.82rem; grid-column: 1 / -1; }
-    .savebar { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; }
+    .field { margin-top: 12px; }
+    .field label { display: block; font-weight: 700; font-size: 0.9rem; margin-bottom: 5px; }
+    .field textarea, .field input[type="text"] { width: 100%; }
+    .field small { color: var(--muted); font-size: 0.8rem; }
+    .field-row { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 10px; }
+    .field-row label { font-weight: 600; font-size: 0.88rem; display: flex; flex-direction: column; gap: 4px; }
+    .preview { margin-top: 10px; background: var(--gold); color: var(--ink); font-weight: 700; border-radius: 8px; padding: 8px 12px; text-align: center; font-size: 0.9rem; }
+    .savebar { position: sticky; bottom: 0; display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin-top: 16px; padding: 12px 0; background: var(--bg); }
     .status { font-size: 0.9rem; font-weight: 600; }
     .status.ok { color: var(--ok); }
     .status.err { color: var(--err); }
     .status.wait { color: var(--primary); }
+    .hint { background: #fff8e1; border-radius: 10px; padding: 10px 12px; font-size: 0.85rem; margin-top: 10px; }
   </style>
 </head>
 <body>
@@ -130,8 +135,8 @@
   <div class="login">
     <img src="/favicon.svg?v=2" alt="">
     <h1>Autoservis Pelhřimov</h1>
-    <p>Správa webu. Zadejte přístupový kód.</p>
-    <input type="password" id="key-input" placeholder="přístupový kód" autocomplete="current-password" aria-label="Přístupový kód">
+    <p>Správa webu. Zadejte heslo.</p>
+    <input type="password" id="key-input" placeholder="heslo" autocomplete="current-password" aria-label="Heslo">
     <button class="btn btn-primary" id="key-btn">Přihlásit</button>
     <div class="msg-err" id="login-err" role="alert"></div>
   </div>
@@ -147,133 +152,202 @@
   </header>
 
   <div class="tabs" role="tablist">
-    <button class="tab" role="tab" id="tab-btn-navstevnost" aria-selected="true" aria-controls="tab-navstevnost">Návštěvnost</button>
-    <button class="tab" role="tab" id="tab-btn-cenik" aria-selected="false" aria-controls="tab-cenik">Ceník</button>
+    <button class="tab" role="tab" id="tab-btn-poptavky" aria-selected="true" aria-controls="tab-poptavky">Poptávky<span class="badge" id="badge-nove" hidden></span></button>
+    <button class="tab" role="tab" id="tab-btn-navstevnost" aria-selected="false" aria-controls="tab-navstevnost">Návštěvnost</button>
+    <button class="tab" role="tab" id="tab-btn-uprava" aria-selected="false" aria-controls="tab-uprava">Úprava webu</button>
   </div>
 
-  <div id="tab-navstevnost" role="tabpanel" aria-labelledby="tab-btn-navstevnost">
+  <!-- ═══ POPTÁVKY ═══ -->
+  <div id="tab-poptavky" role="tabpanel" aria-labelledby="tab-btn-poptavky">
+    <div class="chips" role="group" aria-label="Filtr poptávek">
+      <button class="chip" data-filtr="new" aria-pressed="true">Nové</button>
+      <button class="chip" data-filtr="done" aria-pressed="false">Vyřízené</button>
+      <button class="chip" data-filtr="spam" aria-pressed="false">Spam</button>
+      <button class="chip" data-filtr="vse" aria-pressed="false">Všechny</button>
+    </div>
+    <div id="leads"><div class="empty">Načítám poptávky…</div></div>
+    <p class="note">Každá poptávka z formuláře na webu přijde i e-mailem na autoservispelhrimov@seznam.cz. Tady ji uvidíte, i kdyby e-mail nedorazil.</p>
+    <div class="footrow"><span class="sub" id="leads-updated"></span><button class="btn" id="leads-refresh">Obnovit</button></div>
+  </div>
+
+  <!-- ═══ NÁVŠTĚVNOST ═══ -->
+  <div id="tab-navstevnost" role="tabpanel" aria-labelledby="tab-btn-navstevnost" hidden>
     <div class="tiles">
       <div class="tile"><div class="num" id="t-navstevy">–</div><div class="lbl">návštěv webu</div></div>
       <div class="tile tile-gold"><div class="num" id="t-kontakt">–</div><div class="lbl">vás kontaktovalo</div></div>
       <div class="tile"><div class="num" id="t-zobrazeni">–</div><div class="lbl">zobrazení stránek</div></div>
       <div class="tile"><div class="num" id="t-7dni">–</div><div class="lbl">zobrazení za 7 dní</div></div>
     </div>
-
-    <section class="block">
-      <h2>Cesta zákazníka</h2>
-      <div class="card" id="funnel"></div>
-    </section>
-
+    <section class="block"><h2>Cesta zákazníka</h2><div class="card" id="funnel"></div></section>
     <section class="block">
       <h2>Zobrazení stránek po dnech <small>(posledních 30 dní)</small></h2>
-      <div class="card">
-        <div class="chart" id="chart"></div>
-        <div class="chart-x"><span id="chart-from"></span><span id="chart-to"></span></div>
-      </div>
+      <div class="card"><div class="chart" id="chart"></div><div class="chart-x"><span id="chart-from"></span><span id="chart-to"></span></div></div>
     </section>
-
-    <section class="block">
-      <h2>Jak vás kontaktovali <small>(a odkud na webu)</small></h2>
-      <div class="card"><table id="kontakt-table"></table><div class="empty" id="kontakt-empty" hidden>Zatím nikdo.</div></div>
-    </section>
-
-    <section class="block">
-      <h2>Na co dalšího klikali</h2>
-      <div class="card"><table id="navigace-table"></table><div class="empty" id="navigace-empty" hidden>Zatím žádné kliky.</div></div>
-    </section>
-
-    <section class="block">
-      <h2>Které stránky lidé čtou</h2>
-      <div class="card"><table id="pages-table"></table><div class="empty" id="pages-empty" hidden>Zatím žádná data.</div></div>
-    </section>
-
-    <section class="block">
-      <h2>Odkud lidé přišli</h2>
-      <div class="card"><table id="sources-table"></table><div class="empty" id="sources-empty" hidden>Zatím žádná data.</div></div>
-    </section>
-
+    <section class="block"><h2>Jak vás kontaktovali <small>(a odkud na webu)</small></h2>
+      <div class="card"><table id="kontakt-table"></table><div class="empty" id="kontakt-empty" hidden>Zatím nikdo.</div></div></section>
+    <section class="block"><h2>Na co dalšího klikali</h2>
+      <div class="card"><table id="navigace-table"></table><div class="empty" id="navigace-empty" hidden>Zatím žádné kliky.</div></div></section>
+    <section class="block"><h2>Které stránky lidé čtou</h2>
+      <div class="card"><table id="pages-table"></table><div class="empty" id="pages-empty" hidden>Zatím žádná data.</div></div></section>
+    <section class="block"><h2>Odkud lidé přišli</h2>
+      <div class="card"><table id="sources-table"></table><div class="empty" id="sources-empty" hidden>Zatím žádná data.</div></div></section>
     <div class="devices" id="devices"></div>
     <p class="note">
       Měříme anonymně a bez cookies od 21.&nbsp;9.&nbsp;2026. <strong>Návštěva</strong> je příchod na web zvenku
-      (z Googlu, z mapy, z odkazu nebo napsáním adresy). Přechody mezi stránkami webu se počítají jen do zobrazení.
-      <strong>Kontaktovali vás</strong> = lidé, kteří na webu klikli na telefon, WhatsApp, SMS nebo e-mail, nebo odeslali formulář.
+      (z Googlu, z mapy, z odkazu nebo napsáním adresy). Přechody mezi stránkami se počítají jen do zobrazení.
+      <strong>Kontaktovali vás</strong> = lidé, kteří klikli na telefon, WhatsApp, SMS nebo e-mail, nebo odeslali formulář.
       Jestli se opravdu dovolali, web nepozná.
     </p>
-    <div class="footrow">
-      <span class="sub" id="updated-at"></span>
-      <button class="btn" id="refresh-btn">Obnovit</button>
-    </div>
+    <div class="footrow"><span class="sub" id="updated-at"></span><button class="btn" id="refresh-btn">Obnovit</button></div>
   </div>
 
-  <div id="tab-cenik" role="tabpanel" aria-labelledby="tab-btn-cenik" hidden>
-    <p class="intro">
-      Po uložení se ceny propíšou do ceníku na webu, do častých dotazů i do údajů pro Google a AI asistenty.
-      Web se přestaví zhruba do minuty. Ceny zadávejte včetně DPH.
-    </p>
-    <div class="card"><div id="cenik-form"><div class="empty">Načítám ceník…</div></div></div>
+  <!-- ═══ ÚPRAVA WEBU ═══ -->
+  <div id="tab-uprava" role="tabpanel" aria-labelledby="tab-btn-uprava" hidden>
+    <p class="intro">Po uložení se změny propíšou na web, do údajů pro Google i pro AI asistenty. Web se přestaví zhruba do minuty.</p>
+    <div id="uprava-obsah"><div class="empty">Načítám…</div></div>
     <div class="savebar">
-      <button class="btn btn-primary" id="save-btn" disabled>Uložit ceník</button>
+      <button class="btn btn-primary" id="save-btn" disabled>Uložit změny</button>
       <button class="btn" id="reload-btn" hidden>Načíst znovu</button>
-      <span class="status" id="cenik-status" role="status"></span>
+      <span class="status" id="uprava-status" role="status"></span>
     </div>
-    <p class="note" id="cenik-meta"></p>
+    <p class="note" id="uprava-meta"></p>
   </div>
 
-  <div class="footrow">
-    <span></span>
-    <button class="linklike" id="logout-btn">Odhlásit</button>
-  </div>
+  <div class="footrow"><span></span><button class="linklike" id="logout-btn">Odhlásit</button></div>
 </div>
 
 <script>
 (function () {
   var SITE = 'autoservis-pelhrimov';
-  var STATS_API = 'https://app.webzitra.cz/api/client-stats?site=' + SITE + '&days=30';
-  var CONTENT_API = 'https://app.webzitra.cz/api/client-content?site=' + SITE;
+  var API = 'https://app.webzitra.cz/api/';
+  var STATS_API = API + 'client-stats?site=' + SITE + '&days=30';
+  var CONTENT_API = API + 'client-content?site=' + SITE;
+  var INBOX_API = API + 'client-inbox?site=' + SITE;
   var KEY_STORE = 'ap_admin_key';
 
   var $ = function (id) { return document.getElementById(id); };
   function getKey() { try { return localStorage.getItem(KEY_STORE) || ''; } catch (e) { return ''; } }
   function setKey(k) { try { localStorage.setItem(KEY_STORE, k); } catch (e) {} }
   function clearKey() { try { localStorage.removeItem(KEY_STORE); } catch (e) {} }
-
   function fmt(n) { return (n || 0).toLocaleString('cs-CZ'); }
   function pct(part, whole) { return whole ? Math.round(100 * (part || 0) / whole) + ' %' : '0 %'; }
   function lide(n) { n = n || 0; return fmt(n) + ' ' + (n === 1 ? 'člověk' : (n >= 2 && n <= 4 ? 'lidé' : 'lidí')); }
   function czDay(iso) { var p = (iso || '').split('-'); return p.length === 3 ? (+p[2]) + '. ' + (+p[1]) + '.' : iso; }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
+  function findBy(arr, key, val) { for (var i = 0; i < (arr || []).length; i++) if (arr[i][key] === val) return arr[i]; return null; }
+  function api(url, opts) {
+    opts = opts || {};
+    var h = { 'x-admin-key': getKey() };
+    if (opts.body) h['content-type'] = 'application/json';
+    return fetch(url, { method: opts.method || 'GET', headers: h, body: opts.body, cache: 'no-store' })
+      .then(function (r) {
+        return r.json().catch(function () { return {}; }).then(function (j) {
+          if (r.status === 401) { clearKey(); showLogin('Přihlaste se prosím znovu.'); throw new Error('bad_key'); }
+          return { ok: r.ok, status: r.status, j: j };
+        });
+      });
+  }
 
-  // ── názvy pro lidi (žádná hantýrka) ──
-  var STRANKY = {
-    '/': 'Úvodní stránka', '/diagnostika/': 'Diagnostika', '/pneuservis/': 'Pneuservis',
-    '/geometrie/': 'Geometrie kol', '/priprava-stk/': 'Příprava na STK', '/karosarske-prace/': 'Karosářské práce',
-    '/udrzba-a-servis/': 'Údržba a servis', '/dekujeme/': 'Poděkování po odeslání formuláře'
-  };
-  var MISTA = {
-    uvod: 'úvod stránky', lista: 'lišta dole na mobilu', kontakt: 'sekce Kontakt', cenik: 'ceník', faq: 'časté dotazy',
-    menu: 'menu', paticka: 'patička', recenze: 'recenze', sluzby: 'služby', 'o-nas': 'o nás', galerie: 'galerie',
-    dekujeme: 'poděkování', diagnostika: 'stránka Diagnostika', pneuservis: 'stránka Pneuservis',
-    geometrie: 'stránka Geometrie', 'priprava-stk': 'stránka Příprava na STK', 'karosarske-prace': 'stránka Karosářské práce',
-    'udrzba-a-servis': 'stránka Údržba a servis'
-  };
+  // ═══ POPTÁVKY ═══
+  var leads = [], filtr = 'new';
+  var POLE_POPORADI = ['Telefon', 'email', 'Služba', 'Termín'];
+  function czDatum(iso) {
+    var m = /^(\d{4})-(\d{2})-(\d{2})$/.exec(iso || '');
+    return m ? (+m[3]) + '. ' + (+m[2]) + '. ' + m[1] : iso;
+  }
+  function kdy(ts) {
+    var d = new Date(ts); if (isNaN(d)) return '';
+    return d.toLocaleString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+  }
+  function telOdkaz(t) { var c = (t || '').replace(/[^\d+]/g, ''); return c.length >= 9 ? 'tel:' + c : null; }
+  function mailOdkaz(m) { return /^[^\s@<>"]+@[^\s@<>"]+\.[^\s@<>"]+$/.test(m || '') ? 'mailto:' + m : null; }
+
+  function renderLeads() {
+    var box = $('leads'); box.textContent = '';
+    var list = leads.filter(function (l) { return filtr === 'vse' || l.status === filtr; });
+    if (!list.length) {
+      box.appendChild(el('div', 'card empty', filtr === 'new' ? 'Žádné nové poptávky.' : 'Nic tu není.'));
+      return;
+    }
+    list.forEach(function (l) {
+      var f = l.fields || {};
+      var c = el('div', 'card lead' + (l.status === 'done' ? ' done' : l.status === 'spam' ? ' spam' : ''));
+      var head = el('div', 'lead-head');
+      var name = el('div', 'lead-name', f['Jméno'] || f.name || f.jmeno || 'Bez jména');
+      if (l.status === 'new') name.appendChild(el('span', 'tag tag-new', 'nová'));
+      head.appendChild(name); head.appendChild(el('div', 'lead-when', kdy(l.created_at)));
+      c.appendChild(head);
+
+      var links = el('div', 'lead-links');
+      var tel = f['Telefon'] || f.phone, mail = f.email;
+      var th = telOdkaz(tel), mh = mailOdkaz(mail);
+      if (th) { var a1 = el('a', null, 'Zavolat ' + tel); a1.href = th; links.appendChild(a1); } else if (tel) links.appendChild(el('span', null, tel));
+      if (mh) { var a2 = el('a', null, mail); a2.href = mh; links.appendChild(a2); } else if (mail) links.appendChild(el('span', null, mail));
+      if (links.childNodes.length) c.appendChild(links);
+
+      Object.keys(f).forEach(function (k) {
+        if (['Jméno', 'name', 'jmeno', 'Telefon', 'phone', 'email', 'Zpráva', 'message'].indexOf(k) !== -1) return;
+        var r = el('div', 'lead-row'); r.appendChild(el('b', null, k + ': '));
+        r.appendChild(document.createTextNode(k === 'Termín' ? czDatum(f[k]) : f[k]));
+        c.appendChild(r);
+      });
+      var zprava = f['Zpráva'] || f.message;
+      if (zprava) c.appendChild(el('div', 'lead-msg', zprava));
+
+      var act = el('div', 'lead-actions');
+      function tlacitko(text, stav, primar) {
+        var b = el('button', 'btn btn-small' + (primar ? ' btn-primary' : ''), text);
+        b.addEventListener('click', function () { zmenStav(l, stav, b); });
+        act.appendChild(b);
+      }
+      if (l.status !== 'done') tlacitko('Vyřízeno', 'done', true);
+      if (l.status !== 'new') tlacitko('Vrátit mezi nové', 'new');
+      if (l.status !== 'spam') tlacitko('Spam', 'spam');
+      c.appendChild(act);
+      box.appendChild(c);
+    });
+  }
+  function badge(n) { var b = $('badge-nove'); b.textContent = n ? String(n) : ''; b.hidden = !n; }
+  function loadLeads() {
+    $('leads-refresh').disabled = true;
+    return api(INBOX_API).then(function (x) {
+      if (!x.ok) throw new Error(x.j.error || 'http');
+      leads = x.j.poptavky || []; badge(x.j.nove || 0); renderLeads();
+      $('leads-updated').textContent = 'Načteno ' + new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+    }).catch(function (e) {
+      if (e.message === 'bad_key') return;
+      $('leads').textContent = ''; $('leads').appendChild(el('div', 'card empty', 'Poptávky se nepodařilo načíst. Zkuste Obnovit.'));
+    }).then(function () { $('leads-refresh').disabled = false; });
+  }
+  function zmenStav(l, stav, btn) {
+    btn.disabled = true;
+    api(INBOX_API, { method: 'PATCH', body: JSON.stringify({ id: l.id, status: stav }) }).then(function (x) {
+      if (!x.ok) throw new Error('fail');
+      l.status = stav; badge(leads.filter(function (z) { return z.status === 'new'; }).length); renderLeads();
+    }).catch(function (e) { if (e.message !== 'bad_key') { btn.disabled = false; alert('Změnu se nepodařilo uložit, zkuste to znovu.'); } });
+  }
+  document.querySelectorAll('.chip').forEach(function (c) {
+    c.addEventListener('click', function () {
+      filtr = c.dataset.filtr;
+      document.querySelectorAll('.chip').forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      renderLeads();
+    });
+  });
+
+  // ═══ NÁVŠTĚVNOST ═══
+  var STRANKY = { '/': 'Úvodní stránka', '/diagnostika/': 'Diagnostika', '/pneuservis/': 'Pneuservis', '/geometrie/': 'Geometrie kol', '/priprava-stk/': 'Příprava na STK', '/karosarske-prace/': 'Karosářské práce', '/udrzba-a-servis/': 'Údržba a servis', '/dekujeme/': 'Poděkování po odeslání formuláře' };
+  var MISTA = { uvod: 'úvod stránky', lista: 'lišta dole na mobilu', kontakt: 'sekce Kontakt', cenik: 'ceník', faq: 'časté dotazy', menu: 'menu', paticka: 'patička', recenze: 'recenze', sluzby: 'služby', 'o-nas': 'o nás', galerie: 'galerie', dekujeme: 'poděkování', diagnostika: 'stránka Diagnostika', pneuservis: 'stránka Pneuservis', geometrie: 'stránka Geometrie', 'priprava-stk': 'stránka Příprava na STK', 'karosarske-prace': 'stránka Karosářské práce', 'udrzba-a-servis': 'stránka Údržba a servis' };
   var KANALY = { telefon: 'Zavolali', whatsapp: 'Napsali na WhatsApp', sms: 'Poslali SMS', email: 'Napsali e-mail', formular: 'Odeslali formulář' };
-  var SEKCE = { sluzby: 'Služby', cenik: 'Ceník', recenze: 'Recenze', faq: 'Časté dotazy', kontakt: 'Kontakt' };
-
   function labelName(label) {
     var p = (label || '').split(':');
     if (p[0] === 'kontakt') return (KANALY[p[1]] || p[1]) + (p[2] ? ' · ' + (MISTA[p[2]] || p[2]) : '');
     if (p[0] === 'navigace') {
       if (p[1] === 'google-recenze') return 'Otevřeli recenze na Googlu';
-      if ((p[1] || '').indexOf('sluzba-') === 0) {
-        var slug = p[1].slice(7);
-        return 'Otevřeli službu ' + (STRANKY['/' + slug + '/'] || slug) + (p[2] ? ' · z ' + (MISTA[p[2]] || p[2]) : '');
-      }
+      if ((p[1] || '').indexOf('sluzba-') === 0) { var s = p[1].slice(7); return 'Otevřeli službu ' + (STRANKY['/' + s + '/'] || s) + (p[2] ? ' · z ' + (MISTA[p[2]] || p[2]) : ''); }
     }
     return label;
   }
-
-  var AI = { 'chatgpt.com': 'ChatGPT', 'chat.openai.com': 'ChatGPT', 'perplexity.ai': 'Perplexity', 'www.perplexity.ai': 'Perplexity',
-    'claude.ai': 'Claude', 'gemini.google.com': 'Gemini', 'copilot.microsoft.com': 'Copilot' };
+  var AI = { 'chatgpt.com': 'ChatGPT', 'chat.openai.com': 'ChatGPT', 'perplexity.ai': 'Perplexity', 'www.perplexity.ai': 'Perplexity', 'claude.ai': 'Claude', 'gemini.google.com': 'Gemini', 'copilot.microsoft.com': 'Copilot' };
   function sourceName(raw) {
     var s = (raw || '').toLowerCase(), host = s.split('/')[0];
     if (s === 'direct') return 'Napsali adresu nebo záložka';
@@ -288,51 +362,32 @@
     if (/(^|\.)mapy\.(cz|com)$/.test(host)) return 'Mapy.cz';
     return host || s;
   }
-
   function row(name, main, sub, barPct) {
     var tr = el('tr'), td1 = el('td', null, name);
     if (barPct != null) { var b = el('span', 'rowbar'); b.style.width = Math.max(3, Math.round(barPct)) + '%'; td1.appendChild(b); }
     tr.appendChild(td1); tr.appendChild(el('td', 'n', main)); tr.appendChild(el('td', 's', sub || ''));
     return tr;
   }
-  function fillTable(tableId, emptyId, rows) {
-    var t = $(tableId); t.textContent = '';
-    rows.forEach(function (r) { t.appendChild(r); });
-    $(emptyId).hidden = rows.length > 0;
-  }
-  function findBy(arr, key, val) { for (var i = 0; i < (arr || []).length; i++) if (arr[i][key] === val) return arr[i]; return null; }
-
-  // ── Návštěvnost ──
+  function fillTable(tableId, emptyId, rows) { var t = $(tableId); t.textContent = ''; rows.forEach(function (r) { t.appendChild(r); }); $(emptyId).hidden = rows.length > 0; }
   function renderStats(st) {
     var totals = st.totals || {}, last7 = st.last7 || {};
     var interni = findBy(st.sources, 'source', 'interni');
     var navstevy = Math.max(0, (totals.visitors || 0) - (interni ? interni.visitors || 0 : 0));
-    var kontakt = findBy(st.click_groups, 'group', 'kontakt');
-    var kontaktLidi = kontakt ? kontakt.visitors || 0 : 0;
-    $('t-navstevy').textContent = fmt(navstevy);
-    $('t-kontakt').textContent = fmt(kontaktLidi);
-    $('t-zobrazeni').textContent = fmt(totals.pageviews);
-    $('t-7dni').textContent = fmt(last7.pageviews);
-
+    var kontakt = findBy(st.click_groups, 'group', 'kontakt'), kontaktLidi = kontakt ? kontakt.visitors || 0 : 0;
+    $('t-navstevy').textContent = fmt(navstevy); $('t-kontakt').textContent = fmt(kontaktLidi);
+    $('t-zobrazeni').textContent = fmt(totals.pageviews); $('t-7dni').textContent = fmt(last7.pageviews);
     var f = $('funnel'); f.textContent = '';
     var cenik = findBy(st.sections, 'label', 'cenik'), kont = findBy(st.sections, 'label', 'kontakt');
-    [['1', 'Přišli na web', 'návštěvy zvenku', navstevy],
-     ['2', 'Prohlédli si ceník', 'dolistovali k ceníku', cenik ? cenik.visitors : 0],
-     ['3', 'Došli ke kontaktu', 'dolistovali k sekci Kontakt', kont ? kont.visitors : 0],
-     ['4', 'Kontaktovali vás', 'telefon, WhatsApp, SMS, e-mail nebo formulář', kontaktLidi]
+    [['1', 'Přišli na web', 'návštěvy zvenku', navstevy], ['2', 'Prohlédli si ceník', 'vydrželi u ceníku aspoň vteřinu', cenik ? cenik.visitors : 0],
+     ['3', 'Došli ke kontaktu', 'vydrželi u sekce Kontakt aspoň vteřinu', kont ? kont.visitors : 0], ['4', 'Kontaktovali vás', 'telefon, WhatsApp, SMS, e-mail nebo formulář', kontaktLidi]
     ].forEach(function (s, i) {
-      var step = el('div', 'step');
-      step.appendChild(el('div', 'step-no', s[0]));
+      var step = el('div', 'step'); step.appendChild(el('div', 'step-no', s[0]));
       var what = el('div', 'step-what', s[1]); what.appendChild(el('small', null, s[2])); step.appendChild(what);
-      var num = el('div', 'step-num', fmt(s[3]));
-      if (i > 0 && navstevy) num.appendChild(el('small', null, pct(s[3], navstevy)));
-      step.appendChild(num);
-      f.appendChild(step);
+      var num = el('div', 'step-num', fmt(s[3])); if (i > 0 && navstevy) num.appendChild(el('small', null, pct(s[3], navstevy)));
+      step.appendChild(num); f.appendChild(step);
     });
-
     var chart = $('chart'); chart.textContent = '';
-    var daily = st.daily || [];
-    var max = daily.reduce(function (m, d) { return Math.max(m, d.pageviews || 0); }, 0);
+    var daily = st.daily || [], max = daily.reduce(function (m, d) { return Math.max(m, d.pageviews || 0); }, 0);
     daily.forEach(function (d) {
       var v = d.pageviews || 0, b = el('div', 'bar' + (v ? '' : ' zero'));
       if (v) b.style.height = Math.max(4, Math.round(100 * v / max)) + '%';
@@ -340,273 +395,265 @@
       chart.appendChild(b);
     });
     if (!daily.length) chart.appendChild(el('div', 'empty', 'Zatím žádná data, měření běží od 21. 9. 2026.'));
-    $('chart-from').textContent = daily.length ? czDay(daily[0].day) : '';
-    $('chart-to').textContent = daily.length ? czDay(daily[daily.length - 1].day) : '';
-
+    $('chart-from').textContent = daily.length ? czDay(daily[0].day) : ''; $('chart-to').textContent = daily.length ? czDay(daily[daily.length - 1].day) : '';
     var clicks = st.clicks || [];
-    var kontaktni = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') === 0; });
-    var ostatni = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') !== 0; });
-    var maxK = kontaktni.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0);
-    fillTable('kontakt-table', 'kontakt-empty', kontaktni.map(function (c) {
-      return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), maxK ? 100 * c.count / maxK : 0);
-    }));
-    var maxO = ostatni.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0);
-    fillTable('navigace-table', 'navigace-empty', ostatni.map(function (c) {
-      return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), maxO ? 100 * c.count / maxO : 0);
-    }));
-
-    var pages = st.pages || [];
-    var maxP = pages.reduce(function (m, p) { return Math.max(m, p.pageviews || 0); }, 0);
-    fillTable('pages-table', 'pages-empty', pages.map(function (p) {
-      return row(STRANKY[p.path] || p.path, fmt(p.pageviews), 'zobrazení', maxP ? 100 * p.pageviews / maxP : 0);
-    }));
-
+    var k = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') === 0; });
+    var o = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') !== 0; });
+    var mk = k.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0), mo = o.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0);
+    fillTable('kontakt-table', 'kontakt-empty', k.map(function (c) { return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), mk ? 100 * c.count / mk : 0); }));
+    fillTable('navigace-table', 'navigace-empty', o.map(function (c) { return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), mo ? 100 * c.count / mo : 0); }));
+    var pages = st.pages || [], mp = pages.reduce(function (m, p) { return Math.max(m, p.pageviews || 0); }, 0);
+    fillTable('pages-table', 'pages-empty', pages.map(function (p) { return row(STRANKY[p.path] || p.path, fmt(p.pageviews), 'zobrazení', mp ? 100 * p.pageviews / mp : 0); }));
     var merged = {}, total = 0;
-    (st.sources || []).forEach(function (s) {
-      if (s.source === 'interni') return;
-      var n = sourceName(s.source);
-      merged[n] = (merged[n] || 0) + (s.visitors || 0); total += s.visitors || 0;
-    });
+    (st.sources || []).forEach(function (s) { if (s.source === 'interni') return; var n = sourceName(s.source); merged[n] = (merged[n] || 0) + (s.visitors || 0); total += s.visitors || 0; });
     var src = Object.keys(merged).map(function (n) { return { n: n, v: merged[n] }; }).sort(function (a, b) { return b.v - a.v; });
-    fillTable('sources-table', 'sources-empty', src.map(function (s) {
-      return row(s.n, fmt(s.v), pct(s.v, total), src[0].v ? 100 * s.v / src[0].v : 0);
-    }));
-
+    fillTable('sources-table', 'sources-empty', src.map(function (s) { return row(s.n, fmt(s.v), pct(s.v, total), src[0].v ? 100 * s.v / src[0].v : 0); }));
     var dv = st.devices || {}, dt = (dv.m || 0) + (dv.t || 0) + (dv.d || 0);
     $('devices').textContent = dt ? 'Zařízení: ' + pct(dv.m, dt) + ' mobil, ' + pct(dv.d, dt) + ' počítač, ' + pct(dv.t, dt) + ' tablet' : '';
     $('updated-at').textContent = 'Načteno ' + new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
   }
-
-  function loadStats(key, fromLogin) {
-    var btn = fromLogin ? $('key-btn') : $('refresh-btn');
-    btn.disabled = true;
-    return fetch(STATS_API, { headers: { 'x-admin-key': key }, cache: 'no-store' })
-      .then(function (r) {
-        if (r.status === 401) throw new Error('bad_key');
-        if (!r.ok) throw new Error('http_' + r.status);
-        return r.json();
-      })
-      .then(function (j) {
-        setKey(key);
-        $('view-login').hidden = true; $('view-app').hidden = false;
-        renderStats(j.stats || {});
-        return true;
-      })
-      .catch(function (err) {
-        if (err.message === 'bad_key') {
-          clearKey(); showLogin(fromLogin ? 'Nesprávný kód.' : '');
-        } else if (fromLogin) {
-          $('login-err').textContent = 'Nepodařilo se načíst data, zkuste to za chvíli.';
-        } else {
-          $('updated-at').textContent = 'Načtení selhalo, zkuste Obnovit.';
-        }
-        return false;
-      })
-      .then(function (ok) { btn.disabled = false; return ok; });
+  var statsNacteno = false;
+  function loadStats() {
+    $('refresh-btn').disabled = true;
+    return api(STATS_API).then(function (x) {
+      if (!x.ok) throw new Error('http'); statsNacteno = true; renderStats(x.j.stats || {});
+    }).catch(function (e) { if (e.message !== 'bad_key') $('updated-at').textContent = 'Načtení selhalo, zkuste Obnovit.'; })
+      .then(function () { $('refresh-btn').disabled = false; });
   }
 
-  // ── Ceník ──
+  // ═══ ÚPRAVA WEBU ═══
   var POLOZKY = [
-    { k: 'mechanicke-prace', n: 'Mechanické práce', j: 'Kč/hod', jenCislo: true, pozn: 'hodinová sazba' },
-    { k: 'prezuti', n: 'Přezutí + vyvážení', j: 'Kč' },
-    { k: 'geometrie', n: 'Geometrie kol', j: 'Kč' },
+    { k: 'mechanicke-prace', n: 'Mechanické práce', j: 'Kč/hod', jenCislo: true },
+    { k: 'prezuti', n: 'Přezutí + vyvážení', j: 'Kč' }, { k: 'geometrie', n: 'Geometrie kol', j: 'Kč' },
     { k: 'diagnostika', n: 'Diagnostika', j: 'Kč', jenCislo: true },
-    { k: 'klimatizace', n: 'Servis klimatizace', j: 'Kč' },
-    { k: 'stk', n: 'Příprava na STK', j: 'Kč' }
+    { k: 'klimatizace', n: 'Servis klimatizace', j: 'Kč' }, { k: 'stk', n: 'Příprava na STK', j: 'Kč' }
   ];
+  var DNY = [['po', 'Pondělí'], ['ut', 'Úterý'], ['st', 'Středa'], ['ct', 'Čtvrtek'], ['pa', 'Pátek'], ['so', 'Sobota'], ['ne', 'Neděle']];
   var TEXT_RE = /^[\p{L}\p{N} .,:;()/+–-]{1,30}$/u;
-  var cenik = { obsah: null, sha: null, puvodni: '' };
-  var nacteno = false;
+  var POZNAMKA_RE = /^[\p{L}\p{N} .,:;!?()/+–„“"'-]{0,120}$/u;
+  var OZNAMENI_RE = /^[\p{L}\p{N} .,:;!?()/+%–„“"'&-]{1,160}$/u;
+  var CAS_RE = /^([01]\d|2[0-3]):[0-5]\d$/;
+  var stav = { obsah: null, verze: null, puvodni: '' }, upravaNactena = false;
 
   function tisice(n) { return String(n).replace(/\B(?=(\d{3})+(?!\d))/g, ' '); }
-  function naWebu(p, pol) {
-    if (p.cena === null) return p.text;
-    return (p.od ? 'od ' : '') + tisice(p.cena) + ' ' + pol.j;
-  }
-  function status(text, cls) { var s = $('cenik-status'); s.textContent = text || ''; s.className = 'status' + (cls ? ' ' + cls : ''); }
+  function status(text, cls) { var s = $('uprava-status'); s.textContent = text || ''; s.className = 'status' + (cls ? ' ' + cls : ''); }
+  function input(type, attrs) { var i = el('input'); i.type = type; Object.keys(attrs || {}).forEach(function (a) { i.setAttribute(a, attrs[a]); }); return i; }
+  function cas(t) { return (t || '').replace(/^0(\d)/, '$1'); }
 
-  function renderCenik() {
-    var box = $('cenik-form'); box.textContent = '';
-    var ceny = (cenik.obsah && cenik.obsah.ceny) || {};
+  function kartaCenik(ceny) {
+    var c = el('div', 'card'); c.appendChild(el('h2', null, 'Ceník'));
     POLOZKY.forEach(function (pol) {
       var p = ceny[pol.k] || { cena: null, od: false, text: '' };
-      var wrap = el('div', 'pol'); wrap.dataset.k = pol.k;
-      var name = el('div', 'pol-name', pol.n);
-      var preview = el('small'); name.appendChild(preview); wrap.appendChild(name);
-      var ctrl = el('div', 'pol-ctrl');
-
-      var mode = null;
+      var w = el('div', 'pol'); w.dataset.k = pol.k;
+      var name = el('div', 'pol-name', pol.n), prev = el('small'); name.appendChild(prev); w.appendChild(name);
+      var ctrl = el('div', 'pol-ctrl'), mode = null;
       if (!pol.jenCislo) {
         mode = el('select'); mode.setAttribute('aria-label', pol.n + ': cena nebo text');
-        [['cena', 'Cena v Kč'], ['text', 'Text místo ceny']].forEach(function (o) {
-          var opt = el('option', null, o[1]); opt.value = o[0]; mode.appendChild(opt);
-        });
-        mode.value = p.cena === null ? 'text' : 'cena';
-        ctrl.appendChild(mode);
+        [['cena', 'Cena v Kč'], ['text', 'Text místo ceny']].forEach(function (o) { var opt = el('option', null, o[1]); opt.value = o[0]; mode.appendChild(opt); });
+        mode.value = p.cena === null ? 'text' : 'cena'; ctrl.appendChild(mode);
       }
-      var odLbl = el('label', 'od'); var od = el('input'); od.type = 'checkbox'; od.checked = !!p.od;
-      odLbl.appendChild(od); odLbl.appendChild(document.createTextNode('od'));
-      var num = el('input'); num.type = 'number'; num.min = '1'; num.max = '1000000'; num.step = '1'; num.inputMode = 'numeric';
-      num.value = p.cena === null ? '' : String(p.cena); num.setAttribute('aria-label', pol.n + ': cena v Kč');
+      var odL = el('label', 'chk'), od = input('checkbox'); od.checked = !!p.od; odL.appendChild(od); odL.appendChild(document.createTextNode('od'));
+      var num = input('number', { min: '1', max: '1000000', step: '1', inputmode: 'numeric', 'aria-label': pol.n + ': cena v Kč' }); num.value = p.cena === null ? '' : String(p.cena);
       var unit = el('span', 'unit', pol.j);
-      var txt = el('input'); txt.type = 'text'; txt.maxLength = 30; txt.value = p.text || ''; txt.placeholder = 'např. dle opravy';
-      txt.setAttribute('aria-label', pol.n + ': text místo ceny');
-      ctrl.appendChild(odLbl); ctrl.appendChild(num); ctrl.appendChild(unit); ctrl.appendChild(txt);
-      wrap.appendChild(ctrl);
-      var err = el('div', 'pol-err'); err.hidden = true; wrap.appendChild(err);
-
+      var txt = input('text', { maxlength: '30', placeholder: 'např. dle opravy', 'aria-label': pol.n + ': text místo ceny' }); txt.value = p.text || '';
+      [odL, num, unit, txt].forEach(function (x) { ctrl.appendChild(x); }); w.appendChild(ctrl);
+      var err = el('div', 'pol-err'); err.hidden = true; w.appendChild(err);
+      w._cti = function () {
+        if (mode && mode.value === 'text') {
+          var t = txt.value.trim();
+          return TEXT_RE.test(t) ? { v: { cena: null, od: false, text: t } } : { e: 'Napište krátký text (max 30 znaků, bez speciálních znaků).' };
+        }
+        var n = Number(num.value.trim());
+        return num.value.trim() && Number.isInteger(n) && n >= 1 && n <= 1000000 ? { v: { cena: n, od: od.checked, text: '' } } : { e: 'Zadejte celou cenu v Kč (1 až 1 000 000).' };
+      };
       function sync() {
-        var jeText = mode && mode.value === 'text';
-        odLbl.hidden = jeText; num.hidden = jeText; unit.hidden = jeText; txt.hidden = !jeText;
-        var v = cist(pol, wrap);
-        preview.textContent = v.chyba ? '' : 'Na webu: ' + naWebu(v.hodnota, pol);
-        wrap.classList.toggle('invalid', !!v.chyba);
-        err.textContent = v.chyba || ''; err.hidden = !v.chyba;
-        zmena();
+        var jt = mode && mode.value === 'text';
+        odL.hidden = jt; num.hidden = jt; unit.hidden = jt; txt.hidden = !jt;
+        var r = w._cti();
+        prev.textContent = r.e ? '' : 'Na webu: ' + (r.v.cena === null ? r.v.text : (r.v.od ? 'od ' : '') + tisice(r.v.cena) + ' ' + pol.j);
+        w.classList.toggle('invalid', !!r.e); err.textContent = r.e || ''; err.hidden = !r.e; zmena();
       }
       [mode, od, num, txt].forEach(function (x) { if (x) { x.addEventListener('input', sync); x.addEventListener('change', sync); } });
-      wrap._sync = sync;
-      box.appendChild(wrap);
-      sync();
+      w._sync = sync; c.appendChild(w);
     });
-    var u = cenik.obsah && cenik.obsah.upraveno ? new Date(cenik.obsah.upraveno) : null;
-    $('cenik-meta').textContent = u && !isNaN(u) ? 'Naposledy upraveno ' + u.toLocaleString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + '.' : '';
+    return c;
   }
 
-  function cist(pol, wrap) {
-    var ctrl = wrap.querySelector('.pol-ctrl');
-    var mode = ctrl.querySelector('select'), od = ctrl.querySelector('input[type="checkbox"]');
-    var num = ctrl.querySelector('input[type="number"]'), txt = ctrl.querySelector('input[type="text"]');
-    if (mode && mode.value === 'text') {
-      var t = txt.value.trim();
-      if (!TEXT_RE.test(t)) return { chyba: 'Napište krátký text (max 30 znaků, bez speciálních znaků).' };
-      return { hodnota: { cena: null, od: false, text: t } };
+  function kartaDoba(doba) {
+    var c = el('div', 'card'); c.appendChild(el('h2', null, 'Otevírací doba'));
+    DNY.forEach(function (dn) {
+      var d = doba[dn[0]] || { otevreno: false, od: '', do: '' };
+      var w = el('div', 'pol'); w.dataset.den = dn[0];
+      var name = el('div', 'pol-name', dn[1]), prev = el('small'); name.appendChild(prev); w.appendChild(name);
+      var ctrl = el('div', 'pol-ctrl');
+      var otL = el('label', 'chk'), ot = input('checkbox'); ot.checked = !!d.otevreno; otL.appendChild(ot); otL.appendChild(document.createTextNode('otevřeno'));
+      var od = input('time', { 'aria-label': dn[1] + ': otevíráme' }); od.value = d.od || '07:00';
+      var dash = el('span', 'unit', '–');
+      var dO = input('time', { 'aria-label': dn[1] + ': zavíráme' }); dO.value = d.do || '15:30';
+      [otL, od, dash, dO].forEach(function (x) { ctrl.appendChild(x); }); w.appendChild(ctrl);
+      var err = el('div', 'pol-err'); err.hidden = true; w.appendChild(err);
+      w._cti = function () {
+        if (!ot.checked) return { v: { otevreno: false, od: '', do: '' } };
+        if (!CAS_RE.test(od.value) || !CAS_RE.test(dO.value)) return { e: 'Vyplňte čas otevření i zavření.' };
+        if (od.value >= dO.value) return { e: 'Zavírací čas musí být později než otevírací.' };
+        return { v: { otevreno: true, od: od.value, do: dO.value } };
+      };
+      function sync() {
+        od.hidden = !ot.checked; dO.hidden = !ot.checked; dash.hidden = !ot.checked;
+        var r = w._cti();
+        prev.textContent = r.e ? '' : (r.v.otevreno ? cas(r.v.od) + '–' + cas(r.v.do) : 'zavřeno');
+        w.classList.toggle('invalid', !!r.e); err.textContent = r.e || ''; err.hidden = !r.e; zmena();
+      }
+      [ot, od, dO].forEach(function (x) { x.addEventListener('input', sync); x.addEventListener('change', sync); });
+      w._sync = sync; c.appendChild(w);
+    });
+    var f = el('div', 'field'); var lab = el('label', null, 'Poznámka pod otevírací dobou'); lab.htmlFor = 'doba-pozn';
+    var t = input('text', { id: 'doba-pozn', maxlength: '120', placeholder: 'např. O víkendech pracujeme po dohodě, stačí zavolat.' }); t.value = doba.poznamka || '';
+    f.appendChild(lab); f.appendChild(t); f.appendChild(el('small', null, 'Zobrazí se v častých dotazech. Nechte prázdné, pokud nic.'));
+    t.addEventListener('input', zmena); c.appendChild(f);
+    c.appendChild(el('div', 'hint', 'Změníte-li otevírací dobu, upravte ji i v profilu na Google Mapách a na Firmy.cz, ať všude sedí stejně.'));
+    return c;
+  }
+
+  function kartaOznameni(o) {
+    var c = el('div', 'card'); c.appendChild(el('h2', null, 'Oznámení na webu'));
+    c.appendChild(el('p', 'intro', 'Krátká zpráva nahoře na všech stránkách, třeba dovolená nebo změna otevírací doby. Když je prázdné, nic se nezobrazí.'));
+    var f = el('div', 'field'); var lab = el('label', null, 'Text oznámení'); lab.htmlFor = 'ozn-text';
+    var ta = el('textarea'); ta.id = 'ozn-text'; ta.rows = 2; ta.maxLength = 160; ta.placeholder = 'např. Od 24. 12. do 1. 1. máme zavřeno. V naléhavých případech volejte 606 389 116.'; ta.value = o.text || '';
+    f.appendChild(lab); f.appendChild(ta); c.appendChild(f);
+    var fr = el('div', 'field-row');
+    var l1 = el('label', null, 'Zobrazit od (nepovinné)'), odI = input('date', { id: 'ozn-od' }); odI.value = o.od || ''; l1.appendChild(odI);
+    var l2 = el('label', null, 'Zobrazit do (nepovinné)'), doI = input('date', { id: 'ozn-do' }); doI.value = o.do || ''; l2.appendChild(doI);
+    fr.appendChild(l1); fr.appendChild(l2); c.appendChild(fr);
+    var prev = el('div', 'preview'); c.appendChild(prev);
+    var err = el('div', 'pol-err'); err.hidden = true; c.appendChild(err);
+    c._cti = function () {
+      var t = ta.value.replace(/\s+/g, ' ').trim();
+      if (t && !OZNAMENI_RE.test(t)) return { e: 'Text může mít nejvýš 160 znaků a nesmí obsahovat < ani >.' };
+      if (odI.value && doI.value && odI.value > doI.value) return { e: 'Datum „od“ je až po datu „do“.' };
+      return { v: { text: t, od: odI.value || '', do: doI.value || '' } };
+    };
+    function sync() {
+      var r = c._cti();
+      prev.hidden = !!r.e || !r.v.text; prev.textContent = r.v ? r.v.text : '';
+      err.textContent = r.e || ''; err.hidden = !r.e; zmena();
     }
-    var raw = num.value.trim();
-    var n = Number(raw);
-    if (!raw || !Number.isInteger(n) || n < 1 || n > 1000000) return { chyba: 'Zadejte celou cenu v Kč (1 až 1 000 000).' };
-    return { hodnota: { cena: n, od: od.checked, text: '' } };
+    [ta, odI, doI].forEach(function (x) { x.addEventListener('input', sync); x.addEventListener('change', sync); });
+    c._sync = sync;
+    return c;
   }
 
+  var karty = {};
+  function renderUprava() {
+    var box = $('uprava-obsah'); box.textContent = '';
+    var o = stav.obsah || {};
+    karty.cenik = kartaCenik(o.ceny || {}); karty.doba = kartaDoba(o.oteviraci_doba || {}); karty.ozn = kartaOznameni(o.oznameni || {});
+    box.appendChild(karty.cenik); box.appendChild(karty.doba); box.appendChild(karty.ozn);
+    box.querySelectorAll('.pol').forEach(function (w) { w._sync(); });
+    karty.ozn._sync();
+    stav.puvodni = JSON.stringify(sesbirat());
+    zmena();
+    var u = o.upraveno ? new Date(o.upraveno) : null;
+    $('uprava-meta').textContent = u && !isNaN(u) ? 'Naposledy upraveno ' + u.toLocaleString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + '.' : '';
+  }
   function sesbirat() {
-    var ceny = {}, chyba = false;
-    POLOZKY.forEach(function (pol) {
-      var wrap = document.querySelector('.pol[data-k="' + pol.k + '"]');
-      var v = wrap ? cist(pol, wrap) : { chyba: 'chybí' };
-      if (v.chyba) chyba = true; else ceny[pol.k] = v.hodnota;
-    });
-    return chyba ? null : ceny;
+    if (!karty.cenik) return null;
+    var ceny = {}, doba = {}, chyba = false;
+    karty.cenik.querySelectorAll('.pol').forEach(function (w) { var r = w._cti(); if (r.e) chyba = true; else ceny[w.dataset.k] = r.v; });
+    karty.doba.querySelectorAll('.pol').forEach(function (w) { var r = w._cti(); if (r.e) chyba = true; else doba[w.dataset.den] = r.v; });
+    var pozn = $('doba-pozn').value.replace(/\s+/g, ' ').trim();
+    if (!POZNAMKA_RE.test(pozn)) chyba = true;
+    doba.poznamka = pozn;
+    var oz = karty.ozn._cti(); if (oz.e) chyba = true;
+    return chyba ? null : { ceny: ceny, oteviraci_doba: doba, oznameni: oz.v };
   }
-
   function zmena() {
     var c = sesbirat();
-    var zmeneno = !!c && JSON.stringify(c) !== cenik.puvodni;
+    var zmeneno = !!c && JSON.stringify(c) !== stav.puvodni;
     $('save-btn').disabled = !zmeneno;
     if (zmeneno) status('');
   }
-
-  function loadCenik() {
-    status('');
-    $('reload-btn').hidden = true;
-    $('cenik-form').textContent = ''; $('cenik-form').appendChild(el('div', 'empty', 'Načítám ceník…'));
-    return fetch(CONTENT_API, { headers: { 'x-admin-key': getKey() }, cache: 'no-store' })
-      .then(function (r) {
-        if (r.status === 401) throw new Error('bad_key');
-        var ct = r.headers.get('content-type') || '';
-        if (ct.indexOf('application/json') === -1) throw new Error('not_ready');
-        return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'http_' + r.status); return j; });
-      })
+  function loadUprava() {
+    status(''); $('reload-btn').hidden = true;
+    var box = $('uprava-obsah'); box.textContent = ''; box.appendChild(el('div', 'empty', 'Načítám…'));
+    return fetch(CONTENT_API, { cache: 'no-store' })
+      .then(function (r) { return r.json().then(function (j) { if (!r.ok) throw new Error(j.error || 'http'); return j; }); })
       .then(function (j) {
-        cenik.obsah = j.obsah; cenik.sha = j.sha;
-        var ceny = (j.obsah && j.obsah.ceny) || {};
-        var norm = {};
-        POLOZKY.forEach(function (pol) { if (ceny[pol.k]) norm[pol.k] = ceny[pol.k]; });
-        cenik.puvodni = JSON.stringify(norm);
-        nacteno = true;
-        renderCenik();
+        if (j.obsah) return j;
+        // první úprava: výchozí hodnoty jsou to, co je teď na webu
+        return fetch('/data/obsah.json?t=' + Date.now(), { cache: 'no-store' }).then(function (r) { return r.json(); })
+          .then(function (o) { return { obsah: o, verze: null }; });
       })
-      .catch(function (err) {
-        var box = $('cenik-form'); box.textContent = '';
-        if (err.message === 'bad_key') { clearKey(); showLogin(''); return; }
-        box.appendChild(el('div', 'empty', err.message === 'not_ready'
-          ? 'Úprava ceníku se ještě spouští. Zkuste to prosím za chvíli.'
-          : 'Ceník se nepodařilo načíst. Zkuste to za chvíli znovu.'));
+      .then(function (j) { stav.obsah = j.obsah; stav.verze = j.verze || null; upravaNactena = true; renderUprava(); })
+      .catch(function () {
+        box.textContent = ''; box.appendChild(el('div', 'card empty', 'Obsah se nepodařilo načíst. Zkuste to za chvíli znovu.'));
         $('reload-btn').hidden = false;
       });
   }
-
   function cekatNaWeb(upraveno) {
     var pokusy = 0;
-    status('Uloženo. Web se přestavuje, nové ceny budou vidět zhruba do minuty…', 'wait');
+    status('Uloženo. Web se přestavuje, změny budou vidět zhruba do minuty…', 'wait');
     (function kolo() {
       pokusy++;
       fetch('/data/obsah.json?t=' + Date.now(), { cache: 'no-store' })
         .then(function (r) { return r.ok ? r.json() : null; })
         .then(function (j) {
-          if (j && j.upraveno === upraveno) { status('Hotovo, nové ceny jsou na webu.', 'ok'); return; }
-          if (pokusy >= 40) { status('Uloženo. Přestavení webu trvá déle než obvykle, ceny se objeví během pár minut.', 'wait'); return; }
+          if (j && j.upraveno === upraveno) { status('Hotovo, změny jsou na webu.', 'ok'); return; }
+          if (pokusy >= 40) { status('Uloženo. Přestavení webu trvá déle než obvykle, změny se objeví během pár minut.', 'wait'); return; }
           setTimeout(kolo, 5000);
         })
         .catch(function () { if (pokusy < 40) setTimeout(kolo, 5000); });
     })();
   }
-
   function ulozit() {
-    var ceny = sesbirat();
-    if (!ceny) { status('Opravte prosím zvýrazněné položky.', 'err'); return; }
-    var obsah = { upraveno: new Date().toISOString(), ceny: ceny };
-    $('save-btn').disabled = true;
-    status('Ukládám…', 'wait');
-    fetch(CONTENT_API, {
-      method: 'PUT', cache: 'no-store',
-      headers: { 'x-admin-key': getKey(), 'content-type': 'application/json' },
-      body: JSON.stringify({ obsah: obsah, sha: cenik.sha })
-    })
-      .then(function (r) { return r.json().catch(function () { return {}; }).then(function (j) { return { r: r, j: j }; }); })
-      .then(function (x) {
-        if (x.r.status === 401) { clearKey(); showLogin('Přihlaste se prosím znovu.'); return; }
-        if (x.r.status === 409) {
-          status('Ceník mezitím změnil někdo jiný. Načtěte ho znovu a úpravu zopakujte.', 'err');
-          $('reload-btn').hidden = false; return;
-        }
-        if (!x.r.ok || !x.j.success) {
-          status('Uložení se nepovedlo' + (x.j.detail ? ' (' + x.j.detail + ')' : '') + '. Zkuste to znovu.', 'err');
-          $('save-btn').disabled = false; return;
-        }
-        cenik.sha = x.j.sha; cenik.obsah = obsah; cenik.puvodni = JSON.stringify(ceny);
-        renderCenik();
-        cekatNaWeb(obsah.upraveno);
-      })
-      .catch(function () { status('Uložení se nepovedlo (síť). Zkuste to znovu.', 'err'); $('save-btn').disabled = false; });
+    var c = sesbirat();
+    if (!c) { status('Opravte prosím zvýrazněné položky.', 'err'); return; }
+    var obsah = { upraveno: new Date().toISOString(), ceny: c.ceny, oteviraci_doba: c.oteviraci_doba, oznameni: c.oznameni };
+    $('save-btn').disabled = true; status('Ukládám…', 'wait');
+    api(CONTENT_API, { method: 'PUT', body: JSON.stringify({ obsah: obsah, verze: stav.verze }) }).then(function (x) {
+      if (x.status === 409) { status('Obsah mezitím změnil někdo jiný. Načtěte ho znovu a úpravu zopakujte.', 'err'); $('reload-btn').hidden = false; return; }
+      if (!x.ok || !x.j.success) { status('Uložení se nepovedlo' + (x.j.detail ? ' (' + x.j.detail + ')' : '') + '. Zkuste to znovu.', 'err'); $('save-btn').disabled = false; return; }
+      stav.verze = x.j.verze; stav.obsah = obsah; stav.puvodni = JSON.stringify(c); zmena();
+      var u = new Date(obsah.upraveno);
+      $('uprava-meta').textContent = 'Naposledy upraveno ' + u.toLocaleString('cs-CZ', { day: 'numeric', month: 'numeric', year: 'numeric', hour: '2-digit', minute: '2-digit' }) + '.';
+      if (x.j.nasazeni && x.j.nasazeni.spusteno) cekatNaWeb(obsah.upraveno);
+      else status('Uloženo, ale web se nepodařilo přestavět. Dejte prosím vědět WebZítra.', 'err');
+    }).catch(function (e) { if (e.message !== 'bad_key') { status('Uložení se nepovedlo (síť). Zkuste to znovu.', 'err'); $('save-btn').disabled = false; } });
   }
 
-  // ── záložky, přihlášení ──
+  // ═══ záložky, přihlášení ═══
+  var TABY = ['poptavky', 'navstevnost', 'uprava'];
   function prepnout(ktera) {
-    ['navstevnost', 'cenik'].forEach(function (t) {
-      var on = t === ktera;
-      $('tab-' + t).hidden = !on;
-      $('tab-btn-' + t).setAttribute('aria-selected', on ? 'true' : 'false');
-    });
-    if (ktera === 'cenik' && !nacteno) loadCenik();
+    TABY.forEach(function (t) { var on = t === ktera; $('tab-' + t).hidden = !on; $('tab-btn-' + t).setAttribute('aria-selected', on ? 'true' : 'false'); });
+    if (ktera === 'navstevnost' && !statsNacteno) loadStats();
+    if (ktera === 'uprava' && !upravaNactena) loadUprava();
   }
   function showLogin(msg) {
-    $('view-app').hidden = true; $('view-login').hidden = false;
-    $('login-err').textContent = msg || '';
+    $('view-app').hidden = true; $('view-login').hidden = false; $('login-err').textContent = msg || '';
     setTimeout(function () { $('key-input').focus(); }, 50);
   }
+  function prihlasit(k) {
+    $('key-btn').disabled = true;
+    fetch(INBOX_API, { headers: { 'x-admin-key': k }, cache: 'no-store' }).then(function (r) {
+      if (r.status === 401) throw new Error('bad_key');
+      if (!r.ok) throw new Error('http');
+      setKey(k); $('view-login').hidden = true; $('view-app').hidden = false; prepnout('poptavky'); loadLeads();
+    }).catch(function (e) {
+      $('login-err').textContent = e.message === 'bad_key' ? 'Nesprávné heslo.' : 'Nepodařilo se přihlásit, zkuste to za chvíli.';
+    }).then(function () { $('key-btn').disabled = false; });
+  }
 
-  $('key-btn').addEventListener('click', function () { var k = $('key-input').value.trim(); if (k) loadStats(k, true); });
+  $('key-btn').addEventListener('click', function () { var k = $('key-input').value.trim(); if (k) prihlasit(k); });
   $('key-input').addEventListener('keydown', function (e) { if (e.key === 'Enter') $('key-btn').click(); });
-  $('refresh-btn').addEventListener('click', function () { loadStats(getKey(), false); });
-  $('tab-btn-navstevnost').addEventListener('click', function () { prepnout('navstevnost'); });
-  $('tab-btn-cenik').addEventListener('click', function () { prepnout('cenik'); });
+  $('refresh-btn').addEventListener('click', loadStats);
+  $('leads-refresh').addEventListener('click', loadLeads);
+  TABY.forEach(function (t) { $('tab-btn-' + t).addEventListener('click', function () { prepnout(t); }); });
   $('save-btn').addEventListener('click', ulozit);
-  $('reload-btn').addEventListener('click', function () { nacteno = false; loadCenik(); });
-  $('logout-btn').addEventListener('click', function () { clearKey(); $('key-input').value = ''; nacteno = false; showLogin(''); });
+  $('reload-btn').addEventListener('click', function () { upravaNactena = false; loadUprava(); });
+  $('logout-btn').addEventListener('click', function () { clearKey(); $('key-input').value = ''; statsNacteno = false; upravaNactena = false; showLogin(''); });
   window.addEventListener('beforeunload', function (e) { if (!$('save-btn').disabled) { e.preventDefault(); e.returnValue = ''; } });
 
-  var saved = getKey();
-  if (saved) { $('view-app').hidden = false; loadStats(saved, false); } else { showLogin(''); }
+  if (getKey()) { $('view-app').hidden = false; prepnout('poptavky'); loadLeads(); } else { showLogin(''); }
 })();
 </script>
 </body>
