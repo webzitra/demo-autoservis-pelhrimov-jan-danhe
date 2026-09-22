@@ -40,16 +40,19 @@
 
     .top { display: flex; justify-content: space-between; align-items: flex-start; gap: 12px; margin-bottom: 16px; }
     .top a { color: var(--primary); font-weight: 600; font-size: 0.9rem; white-space: nowrap; }
-    .tabs { display: flex; gap: 4px; border-bottom: 2px solid var(--line); margin-bottom: 20px; overflow-x: auto; }
-    .tab { font: inherit; font-weight: 700; background: none; border: none; padding: 10px 12px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; margin-bottom: -2px; white-space: nowrap; }
+    /* linka pod záložkami = stín, ne border: záporný okraj záložky dělal svislý posuvník a ořízl rámeček fokusu */
+    .tabs { display: flex; gap: 4px; box-shadow: inset 0 -2px 0 var(--line); margin-bottom: 20px; overflow-x: auto; overflow-y: hidden; scrollbar-width: none; }
+    .tabs::-webkit-scrollbar { display: none; }
+    .tab { font: inherit; font-weight: 700; background: none; border: none; padding: 10px 12px; color: var(--muted); cursor: pointer; border-bottom: 3px solid transparent; white-space: nowrap; }
     .tab[aria-selected="true"] { color: var(--navy); border-bottom-color: var(--gold); }
+    .tab:focus-visible { outline-offset: -3px; border-radius: 6px; }
+    @media (max-width: 400px) { .tab { padding: 10px 9px; } }
     .badge { display: inline-block; min-width: 20px; padding: 0 6px; margin-left: 6px; border-radius: 10px; background: var(--err); color: #fff; font-size: 0.75rem; line-height: 20px; text-align: center; }
 
     .tiles { display: grid; grid-template-columns: repeat(2, 1fr); gap: 12px; margin-bottom: 24px; }
-    @media (min-width: 640px) { .tiles { grid-template-columns: repeat(4, 1fr); } }
-    .tile { background: var(--card); border-radius: 14px; padding: 14px 14px 12px; box-shadow: 0 3px 12px rgba(12, 52, 95, 0.06); }
-    .tile .num { font-size: 1.9rem; font-weight: 800; line-height: 1.1; color: var(--navy); font-variant-numeric: tabular-nums; }
-    .tile .lbl { color: var(--muted); font-size: 0.78rem; font-weight: 600; margin-top: 3px; }
+    .tile { background: var(--card); border-radius: 14px; padding: 16px 18px 14px; box-shadow: 0 3px 12px rgba(12, 52, 95, 0.06); }
+    .tile .num { font-size: 2.4rem; font-weight: 800; line-height: 1.05; color: var(--navy); font-variant-numeric: tabular-nums; }
+    .tile .lbl { color: var(--muted); font-size: 0.9rem; font-weight: 600; margin-top: 4px; }
     .tile-gold { background: var(--navy); }
     .tile-gold .num { color: var(--gold); }
     .tile-gold .lbl { color: rgba(255, 255, 255, 0.8); }
@@ -57,25 +60,22 @@
     .card { background: var(--card); border-radius: 14px; padding: 14px 16px; box-shadow: 0 3px 12px rgba(12, 52, 95, 0.06); }
     .card + .card { margin-top: 14px; }
 
-    .step { display: flex; align-items: center; gap: 12px; padding: 10px 2px; border-top: 1px solid var(--line); }
-    .step:first-child { border-top: none; }
-    .step-no { flex: none; width: 26px; height: 26px; border-radius: 50%; background: var(--bg); color: var(--primary); font-weight: 800; font-size: 0.8rem; display: flex; align-items: center; justify-content: center; }
-    .step-what { flex: 1; min-width: 0; font-weight: 600; }
-    .step-what small { display: block; color: var(--muted); font-size: 0.76rem; font-weight: 500; }
-    .step-num { font-weight: 800; font-size: 1.05rem; white-space: nowrap; font-variant-numeric: tabular-nums; }
-    .step-num small { color: var(--muted); font-weight: 600; font-size: 0.78rem; margin-left: 4px; }
-    .chart { display: flex; align-items: flex-end; gap: 2px; height: 110px; }
-    .bar { flex: 1; min-width: 3px; max-width: 34px; background: var(--primary); border-radius: 3px 3px 0 0; }
-    .bar.zero { background: var(--line); height: 2px !important; }
-    .chart-x { display: flex; justify-content: space-between; color: var(--muted); font-size: 0.72rem; margin-top: 6px; }
+    /* graf: sloupec na každý den období (i prázdný), číslo nad sloupcem jen u 7 dní */
+    .chart { display: flex; align-items: flex-end; gap: 3px; height: 130px; padding-top: 18px; }
+    .col { flex: 1; min-width: 0; height: 100%; display: flex; align-items: flex-end; justify-content: center; }
+    .bar { position: relative; width: 100%; max-width: 40px; background: var(--primary); border-radius: 3px 3px 0 0; }
+    .bar.zero { background: var(--line); height: 2px; }
+    .bar.none { height: 0; }
+    .bar .val { position: absolute; bottom: 100%; left: 50%; transform: translateX(-50%); margin-bottom: 3px; font-size: 0.75rem; font-weight: 700; color: var(--ink); }
+    .chart-x { display: flex; justify-content: space-between; gap: 3px; color: var(--muted); font-size: 0.75rem; margin-top: 6px; }
+    .chart-x.kazdy span { flex: 1; min-width: 0; text-align: center; }
+    .chart-note { color: var(--muted); font-size: 0.8rem; margin-top: 10px; }
     table { width: 100%; border-collapse: collapse; }
     td { padding: 9px 2px; border-top: 1px solid var(--line); vertical-align: middle; }
     tr:first-child td { border-top: none; }
     td.n { text-align: right; font-weight: 800; white-space: nowrap; font-variant-numeric: tabular-nums; width: 70px; }
-    td.s { text-align: right; color: var(--muted); font-size: 0.8rem; white-space: nowrap; width: 90px; font-variant-numeric: tabular-nums; }
     .rowbar { display: block; height: 4px; border-radius: 2px; background: var(--gold); margin-top: 5px; }
     .empty { color: var(--muted); font-size: 0.9rem; }
-    .devices { color: var(--muted); font-size: 0.88rem; margin-bottom: 8px; }
     .note { color: var(--muted); font-size: 0.8rem; margin-top: 16px; line-height: 1.55; }
     .footrow { display: flex; justify-content: space-between; align-items: center; margin-top: 18px; gap: 12px; }
 
@@ -172,31 +172,26 @@
 
   <!-- ═══ NÁVŠTĚVNOST ═══ -->
   <div id="tab-navstevnost" role="tabpanel" aria-labelledby="tab-btn-navstevnost" hidden>
-    <div class="tiles">
-      <div class="tile"><div class="num" id="t-navstevy">–</div><div class="lbl">návštěv webu</div></div>
-      <div class="tile tile-gold"><div class="num" id="t-kontakt">–</div><div class="lbl">vás kontaktovalo</div></div>
-      <div class="tile"><div class="num" id="t-zobrazeni">–</div><div class="lbl">zobrazení stránek</div></div>
-      <div class="tile"><div class="num" id="t-7dni">–</div><div class="lbl">zobrazení za 7 dní</div></div>
+    <div class="chips" role="group" aria-label="Období">
+      <button class="chip" data-dny="7" aria-pressed="false">Posledních 7 dní</button>
+      <button class="chip" data-dny="30" aria-pressed="true">Posledních 30 dní</button>
     </div>
-    <section class="block"><h2>Cesta zákazníka</h2><div class="card" id="funnel"></div></section>
-    <section class="block">
-      <h2>Zobrazení stránek po dnech <small>(posledních 30 dní)</small></h2>
-      <div class="card"><div class="chart" id="chart"></div><div class="chart-x"><span id="chart-from"></span><span id="chart-to"></span></div></div>
-    </section>
-    <section class="block"><h2>Jak vás kontaktovali <small>(a odkud na webu)</small></h2>
+    <div class="tiles">
+      <div class="tile"><div class="num" id="t-navstevy">–</div><div class="lbl" id="t-navstevy-lbl">lidí přišlo na web</div></div>
+      <div class="tile tile-gold"><div class="num" id="t-kontakt">–</div><div class="lbl" id="t-kontakt-lbl">se ozvalo</div></div>
+    </div>
+    <section class="block"><h2>Návštěvy po dnech</h2>
+      <div class="card"><div class="chart" id="chart"></div><div class="chart-x" id="chart-x"></div><p class="chart-note" id="chart-note" hidden></p></div></section>
+    <section class="block"><h2>Jak se ozvali</h2>
       <div class="card"><table id="kontakt-table"></table><div class="empty" id="kontakt-empty" hidden>Zatím nikdo.</div></div></section>
-    <section class="block"><h2>Na co dalšího klikali</h2>
-      <div class="card"><table id="navigace-table"></table><div class="empty" id="navigace-empty" hidden>Zatím žádné kliky.</div></div></section>
-    <section class="block"><h2>Které stránky lidé čtou</h2>
-      <div class="card"><table id="pages-table"></table><div class="empty" id="pages-empty" hidden>Zatím žádná data.</div></div></section>
-    <section class="block"><h2>Odkud lidé přišli</h2>
-      <div class="card"><table id="sources-table"></table><div class="empty" id="sources-empty" hidden>Zatím žádná data.</div></div></section>
-    <div class="devices" id="devices"></div>
+    <section class="block"><h2>Odkud přišli</h2>
+      <div class="card"><table id="sources-table"></table><div class="empty" id="sources-empty" hidden>Zatím nikdo.</div></div></section>
+    <section class="block"><h2>Které služby si prohlíželi</h2>
+      <div class="card"><table id="pages-table"></table><div class="empty" id="pages-empty" hidden>Zatím nikdo neotevřel stránku žádné služby.</div></div></section>
     <p class="note">
-      Měříme anonymně a bez cookies od 21.&nbsp;9.&nbsp;2026. <strong>Návštěva</strong> je příchod na web zvenku
-      (z Googlu, z mapy, z odkazu nebo napsáním adresy). Přechody mezi stránkami se počítají jen do zobrazení.
-      <strong>Kontaktovali vás</strong> = lidé, kteří klikli na telefon, WhatsApp, SMS nebo e-mail, nebo odeslali formulář.
-      Jestli se opravdu dovolali, web nepozná.
+      Měříme anonymně a bez cookies. <strong>Návštěva</strong> = příchod na web zvenku (z&nbsp;Googlu, z&nbsp;mapy,
+      z&nbsp;odkazu nebo napsáním adresy). <strong>Ozvali se</strong> = klikli na telefon, e-mail, WhatsApp nebo SMS,
+      nebo odeslali poptávku. Jestli se opravdu dovolali, web nepozná. Počítají se i&nbsp;vaše vlastní návštěvy webu.
     </p>
     <div class="footrow"><span class="sub" id="updated-at"></span><button class="btn" id="refresh-btn">Obnovit</button></div>
   </div>
@@ -220,7 +215,7 @@
 (function () {
   var SITE = 'autoservis-pelhrimov';
   var API = 'https://app.webzitra.cz/api/';
-  var STATS_API = API + 'client-stats?site=' + SITE + '&days=30';
+  var STATS_API = API + 'client-stats?site=' + SITE + '&days=';
   var CONTENT_API = API + 'client-content?site=' + SITE;
   var INBOX_API = API + 'client-inbox?site=' + SITE;
   var KEY_STORE = 'ap_admin_key';
@@ -230,11 +225,9 @@
   function setKey(k) { try { localStorage.setItem(KEY_STORE, k); } catch (e) {} }
   function clearKey() { try { localStorage.removeItem(KEY_STORE); } catch (e) {} }
   function fmt(n) { return (n || 0).toLocaleString('cs-CZ'); }
-  function pct(part, whole) { return whole ? Math.round(100 * (part || 0) / whole) + ' %' : '0 %'; }
-  function lide(n) { n = n || 0; return fmt(n) + ' ' + (n === 1 ? 'člověk' : (n >= 2 && n <= 4 ? 'lidé' : 'lidí')); }
+  function tvar(n, jeden, dva, pet) { n = n || 0; return n === 1 ? jeden : (n >= 2 && n <= 4 ? dva : pet); }
   function czDay(iso) { var p = (iso || '').split('-'); return p.length === 3 ? (+p[2]) + '. ' + (+p[1]) + '.' : iso; }
   function el(tag, cls, text) { var e = document.createElement(tag); if (cls) e.className = cls; if (text != null) e.textContent = text; return e; }
-  function findBy(arr, key, val) { for (var i = 0; i < (arr || []).length; i++) if (arr[i][key] === val) return arr[i]; return null; }
   function api(url, opts) {
     opts = opts || {};
     var h = { 'x-admin-key': getKey() };
@@ -326,33 +319,26 @@
       l.status = stav; badge(leads.filter(function (z) { return z.status === 'new'; }).length); renderLeads();
     }).catch(function (e) { if (e.message !== 'bad_key') { btn.disabled = false; alert('Změnu se nepodařilo uložit, zkuste to znovu.'); } });
   }
-  document.querySelectorAll('.chip').forEach(function (c) {
+  document.querySelectorAll('.chip[data-filtr]').forEach(function (c) {
     c.addEventListener('click', function () {
       filtr = c.dataset.filtr;
-      document.querySelectorAll('.chip').forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      document.querySelectorAll('.chip[data-filtr]').forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
       renderLeads();
     });
   });
 
   // ═══ NÁVŠTĚVNOST ═══
-  var STRANKY = { '/': 'Úvodní stránka', '/diagnostika/': 'Diagnostika', '/pneuservis/': 'Pneuservis', '/geometrie/': 'Geometrie kol', '/priprava-stk/': 'Příprava na STK', '/karosarske-prace/': 'Karosářské práce', '/udrzba-a-servis/': 'Údržba a servis', '/dekujeme/': 'Poděkování po odeslání formuláře' };
-  var MISTA = { uvod: 'úvod stránky', lista: 'lišta dole na mobilu', kontakt: 'sekce Kontakt', cenik: 'ceník', faq: 'časté dotazy', menu: 'menu', paticka: 'patička', recenze: 'recenze', sluzby: 'služby', 'o-nas': 'o nás', galerie: 'galerie', dekujeme: 'poděkování', diagnostika: 'stránka Diagnostika', pneuservis: 'stránka Pneuservis', geometrie: 'stránka Geometrie', 'priprava-stk': 'stránka Příprava na STK', 'karosarske-prace': 'stránka Karosářské práce', 'udrzba-a-servis': 'stránka Údržba a servis' };
-  var KANALY = { telefon: 'Zavolali', whatsapp: 'Napsali na WhatsApp', sms: 'Poslali SMS', email: 'Napsali e-mail', formular: 'Odeslali formulář' };
-  function labelName(label) {
-    var p = (label || '').split(':');
-    if (p[0] === 'kontakt') return (KANALY[p[1]] || p[1]) + (p[2] ? ' · ' + (MISTA[p[2]] || p[2]) : '');
-    if (p[0] === 'navigace') {
-      if (p[1] === 'google-recenze') return 'Otevřeli recenze na Googlu';
-      if ((p[1] || '').indexOf('sluzba-') === 0) { var s = p[1].slice(7); return 'Otevřeli službu ' + (STRANKY['/' + s + '/'] || s) + (p[2] ? ' · z ' + (MISTA[p[2]] || p[2]) : ''); }
-    }
-    return label;
-  }
+  // Jen to, co majitele zajímá: kolik lidí přišlo, kolik se ozvalo, jak, odkud a o co.
+  // Data = stats.period (client_site_stats v4): za zvolené období, návštěvy = příchody zvenku.
+  var STRANKY = { '/diagnostika/': 'Diagnostika', '/pneuservis/': 'Pneuservis', '/geometrie/': 'Geometrie kol', '/priprava-stk/': 'Příprava na STK', '/karosarske-prace/': 'Karosářské práce', '/udrzba-a-servis/': 'Údržba a servis' };
+  var KANALY = { telefon: 'Telefon', formular: 'Poptávkový formulář', email: 'E-mail', whatsapp: 'WhatsApp', sms: 'SMS' };
+  var DNY_KRATCE = ['ne', 'po', 'út', 'st', 'čt', 'pá', 'so'];
   var AI = { 'chatgpt.com': 'ChatGPT', 'chat.openai.com': 'ChatGPT', 'perplexity.ai': 'Perplexity', 'www.perplexity.ai': 'Perplexity', 'claude.ai': 'Claude', 'gemini.google.com': 'Gemini', 'copilot.microsoft.com': 'Copilot' };
   function sourceName(raw) {
     var s = (raw || '').toLowerCase(), host = s.split('/')[0];
-    if (s === 'direct') return 'Napsali adresu nebo záložka';
-    if (AI[host]) return 'AI asistent · ' + AI[host];
-    if (s === 'meta-ad' || /^(fb|facebook|ig|instagram|meta)\//.test(s)) return 'Reklama na Facebooku / Instagramu';
+    if (s === 'direct') return 'Přímo (napsali adresu nebo mají záložku)';
+    if (AI[host]) return 'AI asistent ' + AI[host];
+    if (s === 'meta-ad' || /^(fb|facebook|ig|instagram|meta)\//.test(s)) return 'Reklama na Facebooku nebo Instagramu';
     if (/(^|\.)google\./.test(host)) return 'Google';
     if (/(^|\.)seznam\.cz$/.test(host)) return 'Seznam';
     if (/(^|\.)bing\.com$/.test(host)) return 'Bing';
@@ -362,64 +348,80 @@
     if (/(^|\.)mapy\.(cz|com)$/.test(host)) return 'Mapy.cz';
     return host || s;
   }
-  function row(name, main, sub, barPct) {
-    var tr = el('tr'), td1 = el('td', null, name);
-    if (barPct != null) { var b = el('span', 'rowbar'); b.style.width = Math.max(3, Math.round(barPct)) + '%'; td1.appendChild(b); }
-    tr.appendChild(td1); tr.appendChild(el('td', 'n', main)); tr.appendChild(el('td', 's', sub || ''));
-    return tr;
+  function dnesPraha() {
+    try { return new Intl.DateTimeFormat('en-CA', { timeZone: 'Europe/Prague', year: 'numeric', month: '2-digit', day: '2-digit' }).format(new Date()); }
+    catch (e) { return new Date().toISOString().slice(0, 10); }
   }
-  function fillTable(tableId, emptyId, rows) { var t = $(tableId); t.textContent = ''; rows.forEach(function (r) { t.appendChild(r); }); $(emptyId).hidden = rows.length > 0; }
-  function renderStats(st) {
-    var totals = st.totals || {}, last7 = st.last7 || {};
-    var interni = findBy(st.sources, 'source', 'interni');
-    var navstevy = Math.max(0, (totals.visitors || 0) - (interni ? interni.visitors || 0 : 0));
-    var kontakt = findBy(st.click_groups, 'group', 'kontakt'), kontaktLidi = kontakt ? kontakt.visitors || 0 : 0;
-    $('t-navstevy').textContent = fmt(navstevy); $('t-kontakt').textContent = fmt(kontaktLidi);
-    $('t-zobrazeni').textContent = fmt(totals.pageviews); $('t-7dni').textContent = fmt(last7.pageviews);
-    var f = $('funnel'); f.textContent = '';
-    var cenik = findBy(st.sections, 'label', 'cenik'), kont = findBy(st.sections, 'label', 'kontakt');
-    [['1', 'Přišli na web', 'návštěvy zvenku', navstevy], ['2', 'Prohlédli si ceník', 'vydrželi u ceníku aspoň vteřinu', cenik ? cenik.visitors : 0],
-     ['3', 'Došli ke kontaktu', 'vydrželi u sekce Kontakt aspoň vteřinu', kont ? kont.visitors : 0], ['4', 'Kontaktovali vás', 'telefon, WhatsApp, SMS, e-mail nebo formulář', kontaktLidi]
-    ].forEach(function (s, i) {
-      var step = el('div', 'step'); step.appendChild(el('div', 'step-no', s[0]));
-      var what = el('div', 'step-what', s[1]); what.appendChild(el('small', null, s[2])); step.appendChild(what);
-      var num = el('div', 'step-num', fmt(s[3])); if (i > 0 && navstevy) num.appendChild(el('small', null, pct(s[3], navstevy)));
-      step.appendChild(num); f.appendChild(step);
+  function posunDen(iso, o) { var p = iso.split('-'); return new Date(Date.UTC(+p[0], +p[1] - 1, +p[2] + o)).toISOString().slice(0, 10); }
+  function fillTable(tableId, emptyId, items) {
+    var t = $(tableId), max = items.reduce(function (m, i) { return Math.max(m, i.v); }, 0);
+    t.textContent = '';
+    items.forEach(function (i) {
+      var tr = el('tr'), td = el('td', null, i.n), b = el('span', 'rowbar');
+      b.style.width = Math.max(3, Math.round(max ? 100 * i.v / max : 0)) + '%';
+      td.appendChild(b); tr.appendChild(td); tr.appendChild(el('td', 'n', fmt(i.v))); t.appendChild(tr);
     });
-    var chart = $('chart'); chart.textContent = '';
-    var daily = st.daily || [], max = daily.reduce(function (m, d) { return Math.max(m, d.pageviews || 0); }, 0);
-    daily.forEach(function (d) {
-      var v = d.pageviews || 0, b = el('div', 'bar' + (v ? '' : ' zero'));
-      if (v) b.style.height = Math.max(4, Math.round(100 * v / max)) + '%';
-      b.title = czDay(d.day) + ': ' + fmt(v) + ' zobrazení' + (d.clicks ? ', ' + fmt(d.clicks) + ' kliků' : '');
-      chart.appendChild(b);
-    });
-    if (!daily.length) chart.appendChild(el('div', 'empty', 'Zatím žádná data, měření běží od 21. 9. 2026.'));
-    $('chart-from').textContent = daily.length ? czDay(daily[0].day) : ''; $('chart-to').textContent = daily.length ? czDay(daily[daily.length - 1].day) : '';
-    var clicks = st.clicks || [];
-    var k = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') === 0; });
-    var o = clicks.filter(function (c) { return (c.label || '').indexOf('kontakt:') !== 0; });
-    var mk = k.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0), mo = o.reduce(function (m, c) { return Math.max(m, c.count || 0); }, 0);
-    fillTable('kontakt-table', 'kontakt-empty', k.map(function (c) { return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), mk ? 100 * c.count / mk : 0); }));
-    fillTable('navigace-table', 'navigace-empty', o.map(function (c) { return row(labelName(c.label), fmt(c.count) + '×', lide(c.visitors), mo ? 100 * c.count / mo : 0); }));
-    var pages = st.pages || [], mp = pages.reduce(function (m, p) { return Math.max(m, p.pageviews || 0); }, 0);
-    fillTable('pages-table', 'pages-empty', pages.map(function (p) { return row(STRANKY[p.path] || p.path, fmt(p.pageviews), 'zobrazení', mp ? 100 * p.pageviews / mp : 0); }));
-    var merged = {}, total = 0;
-    (st.sources || []).forEach(function (s) { if (s.source === 'interni') return; var n = sourceName(s.source); merged[n] = (merged[n] || 0) + (s.visitors || 0); total += s.visitors || 0; });
-    var src = Object.keys(merged).map(function (n) { return { n: n, v: merged[n] }; }).sort(function (a, b) { return b.v - a.v; });
-    fillTable('sources-table', 'sources-empty', src.map(function (s) { return row(s.n, fmt(s.v), pct(s.v, total), src[0].v ? 100 * s.v / src[0].v : 0); }));
-    var dv = st.devices || {}, dt = (dv.m || 0) + (dv.t || 0) + (dv.d || 0);
-    $('devices').textContent = dt ? 'Zařízení: ' + pct(dv.m, dt) + ' mobil, ' + pct(dv.d, dt) + ' počítač, ' + pct(dv.t, dt) + ' tablet' : '';
-    $('updated-at').textContent = 'Načteno ' + new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' });
+    $(emptyId).hidden = items.length > 0;
   }
-  var statsNacteno = false;
+  function renderChart(p) {
+    var chart = $('chart'), osa = $('chart-x'), dny = p.days || obdobi, dnes = dnesPraha(), mapa = {}, seznam = [];
+    chart.textContent = ''; osa.textContent = '';
+    (p.daily || []).forEach(function (d) { mapa[d.day] = d; });
+    for (var i = dny - 1; i >= 0; i--) seznam.push(posunDen(dnes, -i));
+    var max = seznam.reduce(function (m, d) { return Math.max(m, mapa[d] ? mapa[d].visits || 0 : 0); }, 0);
+    seznam.forEach(function (day) {
+      var d = mapa[day] || {}, v = d.visits || 0, c = d.contacts || 0, col = el('div', 'col');
+      // před začátkem měření žádná čára (neměřeno), po něm šedá (nikdo nepřišel)
+      var b = el('div', 'bar' + (v ? '' : (!p.since || day < p.since ? ' none' : ' zero')));
+      if (v) { b.style.height = Math.max(4, Math.round(100 * v / max)) + '%'; if (dny <= 7) b.appendChild(el('span', 'val', fmt(v))); }
+      col.title = czDay(day) + ': ' + fmt(v) + ' ' + tvar(v, 'návštěva', 'návštěvy', 'návštěv') + (c ? ', ' + fmt(c) + ' ' + tvar(c, 'se ozval', 'se ozvali', 'se ozvalo') : '');
+      col.appendChild(b); chart.appendChild(col);
+    });
+    osa.className = 'chart-x' + (dny <= 7 ? ' kazdy' : '');
+    if (dny <= 7) seznam.forEach(function (day, i) { osa.appendChild(el('span', null, i === dny - 1 ? 'dnes' : DNY_KRATCE[new Date(day + 'T12:00:00Z').getUTCDay()])); });
+    else [seznam[0], seznam[Math.floor((dny - 1) / 2)], null].forEach(function (day) { osa.appendChild(el('span', null, day ? czDay(day) : 'dnes')); });
+    var note = $('chart-note');
+    note.hidden = !!p.since && p.since <= seznam[0];
+    note.textContent = !p.since ? 'Zatím žádná data.' : 'Měříme od ' + czDatum(p.since).replace(/ /g, '\u00a0') + '.';
+  }
+  function renderStats(p) {
+    $('t-navstevy').textContent = fmt(p.visits);
+    $('t-navstevy-lbl').textContent = tvar(p.visits, 'člověk přišel na web', 'lidé přišli na web', 'lidí přišlo na web');
+    $('t-kontakt').textContent = fmt(p.contacts);
+    $('t-kontakt-lbl').textContent = tvar(p.contacts, 'se ozval', 'se ozvali', 'se ozvalo');
+    renderChart(p);
+    fillTable('kontakt-table', 'kontakt-empty', (p.channels || []).map(function (c) { return { n: KANALY[c.channel] || c.channel, v: c.visitors || 0 }; }));
+    var zdroje = {};
+    (p.sources || []).forEach(function (s) { var n = sourceName(s.source); zdroje[n] = (zdroje[n] || 0) + (s.visitors || 0); });
+    fillTable('sources-table', 'sources-empty', Object.keys(zdroje).map(function (n) { return { n: n, v: zdroje[n] }; }).sort(function (a, b) { return b.v - a.v; }));
+    fillTable('pages-table', 'pages-empty', (p.pages || []).filter(function (x) { return STRANKY[x.path]; }).map(function (x) { return { n: STRANKY[x.path], v: x.visitors || 0 }; }));
+  }
+  var obdobi = 30, statsCache = {}, statsNacteno = false;
+  function ukazStats() {
+    var x = statsCache[obdobi]; if (!x) return;
+    renderStats(x.p); $('updated-at').textContent = 'Načteno ' + x.cas;
+  }
   function loadStats() {
+    var dny = obdobi;
     $('refresh-btn').disabled = true;
-    return api(STATS_API).then(function (x) {
-      if (!x.ok) throw new Error('http'); statsNacteno = true; renderStats(x.j.stats || {});
+    return api(STATS_API + dny).then(function (x) {
+      var p = x.ok && x.j.stats && x.j.stats.period;
+      if (!p) throw new Error('http');
+      statsNacteno = true;
+      statsCache[dny] = { p: p, cas: new Date().toLocaleTimeString('cs-CZ', { hour: '2-digit', minute: '2-digit' }) };
+      if (dny === obdobi) ukazStats();
     }).catch(function (e) { if (e.message !== 'bad_key') $('updated-at').textContent = 'Načtení selhalo, zkuste Obnovit.'; })
       .then(function () { $('refresh-btn').disabled = false; });
   }
+  document.querySelectorAll('.chip[data-dny]').forEach(function (c) {
+    c.addEventListener('click', function () {
+      obdobi = +c.dataset.dny;
+      document.querySelectorAll('.chip[data-dny]').forEach(function (x) { x.setAttribute('aria-pressed', x === c ? 'true' : 'false'); });
+      if (statsCache[obdobi]) { ukazStats(); return; }
+      $('t-navstevy').textContent = '–'; $('t-kontakt').textContent = '–'; $('updated-at').textContent = 'Načítám…';
+      loadStats();
+    });
+  });
 
   // ═══ ÚPRAVA WEBU ═══
   var POLOZKY = [
@@ -650,7 +652,7 @@
   TABY.forEach(function (t) { $('tab-btn-' + t).addEventListener('click', function () { prepnout(t); }); });
   $('save-btn').addEventListener('click', ulozit);
   $('reload-btn').addEventListener('click', function () { upravaNactena = false; loadUprava(); });
-  $('logout-btn').addEventListener('click', function () { clearKey(); $('key-input').value = ''; statsNacteno = false; upravaNactena = false; showLogin(''); });
+  $('logout-btn').addEventListener('click', function () { clearKey(); $('key-input').value = ''; statsNacteno = false; statsCache = {}; upravaNactena = false; showLogin(''); });
   window.addEventListener('beforeunload', function (e) { if (!$('save-btn').disabled) { e.preventDefault(); e.returnValue = ''; } });
 
   if (getKey()) { $('view-app').hidden = false; prepnout('poptavky'); loadLeads(); } else { showLogin(''); }
