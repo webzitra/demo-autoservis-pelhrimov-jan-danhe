@@ -32,7 +32,7 @@
     <meta name="theme-color" content="#1e4080">
 
     <!-- Styles -->
-    <link rel="stylesheet" href="css/style.css?v=7">
+    <link rel="stylesheet" href="css/style.css?v=8">
 
     <!-- JSON-LD Structured Data: AutoRepair -->
     <script type="application/ld+json">
@@ -783,8 +783,13 @@
             </div>
             <div class="contact-layout">
                 <div class="contact-left">
-                    <div class="contact-map-embed">
-                        <iframe src="https://maps.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD+652%2C+Pelh%C5%99imov+393+01&t=m&z=15&ie=UTF8&iwloc=&output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Mapa: Autoservis Pelhřimov, Nádražní 652"></iframe>
+                    <div class="contact-map-embed" data-map-src="https://maps.google.com/maps?q=N%C3%A1dra%C5%BEn%C3%AD+652%2C+Pelh%C5%99imov+393+01&t=m&z=15&ie=UTF8&iwloc=&output=embed">
+                        <div class="map-placeholder">
+                            <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0118 0z"/><circle cx="12" cy="10" r="3"/></svg>
+                            <strong>Nádražní 652, Pelhřimov</strong>
+                            <button type="button" class="btn btn-small btn-primary map-load">Zobrazit mapu</button>
+                            <small>Mapa se načte ze služby Google. <a href="/ochrana-osobnich-udaju/#mapa">Více</a></small>
+                        </div>
                     </div>
                     <div class="contact-details">
                         <div class="contact-item">
@@ -862,7 +867,7 @@
                         <button type="submit" class="btn btn-primary btn-full">Odeslat poptávku</button>
                         <p class="form-msg" role="alert" hidden style="color:#b3261e;font-weight:600;margin-top:10px"></p>
                         <p class="form-note">Odpovídáme zpravidla do&nbsp;jedné hodiny v&nbsp;pracovní době. Mimo otevírací dobu nejpozději druhý pracovní den.</p>
-                        <p class="form-note">Údaje z&nbsp;formuláře použijeme jen k&nbsp;vyřízení vaší poptávky. Správce údajů: AUTOSERVIS PELHŘIMOV s.&nbsp;r.&nbsp;o., IČO 05943019.</p>
+                        <p class="form-note">Údaje z&nbsp;formuláře použijeme jen k&nbsp;vyřízení vaší poptávky. Správce údajů: AUTOSERVIS PELHŘIMOV s.&nbsp;r.&nbsp;o., IČO 05943019. <a href="/ochrana-osobnich-udaju/">Jak s&nbsp;údaji zacházíme</a></p>
                         <noscript><p class="form-note">Formulář potřebuje zapnutý JavaScript. Napište nám na autoservispelhrimov@seznam.cz nebo zavolejte 606&nbsp;389&nbsp;116.</p></noscript>
                     </form>
                     <!-- WZ-LEADS: poptávka se uloží na platformě WebZítra (i když e-mail selže) a přijde e-mailem; vidět je v /admin/ -->
@@ -910,23 +915,11 @@
                 </div>
             </div>
             <div class="footer-bottom">
-                <p>&copy; 2026 Autoservis Pelhřimov. Všechna práva vyhrazena.</p>
+                <p>&copy; 2026 Autoservis Pelhřimov. Všechna práva vyhrazena. · <a href="/ochrana-osobnich-udaju/">Ochrana osobních údajů</a></p>
                 <p class="footer-credit">Web vytvořil <a href="https://webzitra.cz" target="_blank" rel="noopener">WebZítra</a></p>
             </div>
         </div>
     </footer>
-
-    <!-- ═══ COOKIE BANNER ═══ -->
-    <div class="cookie-banner" id="cookie-banner" hidden>
-        <div class="cookie-content">
-            <p>Tento web používá cookies pro zajištění nejlepšího zážitku.</p>
-            <p class="cookie-credit">Cookies používáme pouze pro základní funkčnost webu.</p>
-        </div>
-        <div class="cookie-actions">
-            <button class="btn btn-small btn-primary" id="cookie-accept">Přijmout</button>
-            <button class="btn btn-small btn-outline" id="cookie-reject">Odmítnout</button>
-        </div>
-    </div>
 
     <!-- ═══ MOBILE STICKY CTA ═══ -->
     <div class="mobile-cta" id="mobile-cta" aria-hidden="true">
@@ -952,6 +945,6 @@
     </button>
 
     <noscript><style>[data-animate]{opacity:1;transform:none}</style></noscript>
-    <script src="js/main.js?v=2"></script>
+    <script src="js/main.js?v=3"></script>
 </body>
 </html>
