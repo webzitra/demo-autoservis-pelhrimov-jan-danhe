@@ -129,7 +129,17 @@
         });
     }
 
-    // ── Mapa Google až na kliknutí (bez kliknutí se Google nenačte, web je bez cookies) ──
+    // ── Cookie Banner ──
+    var banner = document.getElementById('cookie-banner');
+    if (banner && !localStorage.getItem('cookies-consent')) {
+        banner.hidden = false;
+    }
+    var acceptBtn = document.getElementById('cookie-accept');
+    var rejectBtn = document.getElementById('cookie-reject');
+    if (acceptBtn) acceptBtn.addEventListener('click', function() { localStorage.setItem('cookies-consent', 'accepted'); banner.hidden = true; });
+    if (rejectBtn) rejectBtn.addEventListener('click', function() { localStorage.setItem('cookies-consent', 'rejected'); banner.hidden = true; });
+
+    // ── Mapa Google až na kliknutí (bez kliknutí se Google nenačte) ──
     var mapBox = document.querySelector('[data-map-src]');
     var mapBtn = mapBox && mapBox.querySelector('.map-load');
     if (mapBtn) mapBtn.addEventListener('click', function() {
